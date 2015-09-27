@@ -1,27 +1,31 @@
-<form ng-submit="submit($event)">
+<form ng-submit="submit($event)" class="form-group">
   <div>
     <label for="">Name</label>
-    <input type="text" ng-model="newItem.name" />
+    <input type="text" ng-model="newItem.name" class="form-control" />
   </div>
   <div>
     <label for="">Description</label>
-    <input type="text" ng-model="newItem.description" />
+    <input type="text" ng-model="newItem.description" class="form-control" />
   </div>
   <div>
     <label for="">Price</label>
-    <input type="text" ng-model="newItem.price" />
+    <input type="text" ng-model="newItem.price" class="form-control" />
   </div>
   <div>
     <label for="">Image</label>
-    <input type="text" ng-model="newItem.img" />
+    <input type="text" ng-model="newItem.img" class="form-control" />
   </div>
   <div>
-    <input type="submit"/>
+    <br>
+    <button type="submit" class="btn btn-primary" value="Add Item">Submit</button>
   </div>
 </form>
 
 <ul>
   <li ng-repeat="item in items">
-    {{ item.name }}
+    {{ item.img }}
+    <a href="#!/items/{{item.id}}">{{ item.name }}</a>
+    {{ item.description }}
+    {{ item.price }}
   </li>
 </ul>

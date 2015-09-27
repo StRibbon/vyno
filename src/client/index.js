@@ -1,10 +1,10 @@
 var app = angular.module('Vyno-App', ['ui.router', 'ngAnimate']);
+
 app.config([
   '$locationProvider',
   '$stateProvider',
   '$urlRouterProvider',
   function($locationProvider, $stateProvider, $urlRouterProvider) {
-    $locationProvider.hashPrefix('!');
     $urlRouterProvider.otherwise('/');
     // routes
     $stateProvider
@@ -17,11 +17,17 @@ app.config([
         url: '/items',
         templateUrl: 'views/items.html',
         controller: 'ItemsCtrl'
+      })
+      .state('itemDetails', {
+        url: '/items/:itemId',
+        templateUrl: 'views/item-details.html',
+        controller: 'ItemDetailsCtrl'
       });
   }
 ]);
 
 app.controller('MainCtrl', require('./controllers/MainCtrl'));
 app.controller('ItemsCtrl', require('./controllers/ItemsCtrl'));
+app.controller('ItemDetailsCtrl', require('./controllers/ItemsCtrl'));
 
 console.log('hello world!');

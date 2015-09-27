@@ -11,11 +11,17 @@
     <link rel="stylesheet" href="vendor/animate.css/animate.css"/>
     <link rel="stylesheet" href="app.css"/>
   </head>
-  <body>
-    <div class="container">
-      <h1>Vyno</h1>
-      <a href="#!/items">Items</a>
-      <!-- views -->
+  <body class="container">
+    <nav class="navbar navbar-default navbar-fixed-top"
+         style="border-bottom-width: 0px;">
+      <div class="container">
+      <ul class="nav-ul">
+        <li><a class="nav-a" ui-sref="main">Main</a></li>
+        <li><a class="nav-a" ui-sref="items">Items</a></li>
+      </ul>
+      </div>
+    </nav>
+    <!-- views -->
       <div ui-view></div>
     </div>
     <!-- scripts -->

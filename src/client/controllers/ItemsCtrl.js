@@ -1,4 +1,4 @@
-module.exports = ['$http', '$scope', function($http, $scope) {
+module.exports = ['$http', '$scope', '$state', function($http, $scope, $state) {
   $http.get('/api/items').then(res => {
     $scope.items = res.data;
   });
@@ -10,4 +10,6 @@ module.exports = ['$http', '$scope', function($http, $scope) {
       e.target.reset();
     });
   };
+
+  
 }];
