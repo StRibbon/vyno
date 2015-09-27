@@ -1,0 +1,27 @@
+<form ng-submit="submit($event)">
+  <div>
+    <label for="">Name</label>
+    <input type="text" ng-model="newItem.name" />
+  </div>
+  <div>
+    <label for="">Description</label>
+    <input type="text" ng-model="newItem.description" />
+  </div>
+  <div>
+    <label for="">Price</label>
+    <input type="text" ng-model="newItem.price" />
+  </div>
+  <div>
+    <label for="">Image</label>
+    <input type="text" ng-model="newItem.img" />
+  </div>
+  <div>
+    <input type="submit"/>
+  </div>
+</form>
+
+<ul>
+  <li ng-repeat="item in items">
+    {{ item.name }}
+  </li>
+</ul>
