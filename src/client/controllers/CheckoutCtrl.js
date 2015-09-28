@@ -6,17 +6,17 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $
   $scope.cart = Cart.getItems();
   // TOTAL ITEMS IN CART
   $scope.Badge = Cart.badge();
-  $scope.Total = Cart.addTotal($scope.items); 
+  $scope.Total = Cart.addTotal($scope.cart); 
   $scope.removeItem = function(index){
     console.log(index);
     Cart.deleteItem(index);
-    $scope.Badge = Cart.addTotalItems($scope.items);
-    $scope.Total = Cart.addTotal($scope.items); 
+    $scope.Badge = Cart.addTotalItems($scope.cart);
+    $scope.Total = Cart.addTotal($scope.cart); 
   };
-  $scope.updateItem = function(tea){
-    tea.subTotal = tea.quantity * tea.price;
-    $scope.Badge = Cart.addTotalItems($scope.items);
-    $scope.Total = Cart.addTotal($scope.items); 
+  $scope.updateItem = function(item){
+    item.subTotal = item.quantity * item.price;
+    $scope.Badge = Cart.addTotalItems($scope.cart);
+    $scope.Total = Cart.addTotal($scope.cart); 
   };
   
 }];

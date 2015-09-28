@@ -32,7 +32,7 @@ Cart({{Badge}})
 
 <ul>
   <li ng-repeat="item in items track by $index">
-    <img src="{{ item.img }}" style="width: 200px;">
+    <img src="{{ item.img }}" class="item-list-img">
     <a href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
     {{ item.price | currency }}

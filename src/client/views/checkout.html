@@ -1,20 +1,21 @@
 <h1>Checkout</h1>
 
+<span class="badge">{{Badge}}</span>
+<span>  Total {{Total | currency}}</span>
+
 <ul>
   <li ng-repeat="item in cart track by $index">
-    <img src="{{ item.img }}" style="width: 200px;">
+    <img src="{{ item.img }}" class="item-list-img">
     <a href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
     {{ item.price | currency }}
+
+    <strong>{{item.subTotal | currency}}</strong><br>
+
     <div>
-      <select class="b" ng-model="selected" ng-init="selected='1'">
-            <option ng-selected="setQuantity(selected)">1</option>
-            <option ng-selected="setQuantity(selected)">2</option>
-            <option ng-selected="setQuantity(selected)">3</option>
-            <option ng-selected="setQuantity(selected)">4</option>
-          </select>
-          <span class="btn btn-success btn-xs" ng-click="addItem(selected, item)">
-          <span class="glyphicon glyphicon-plus"></span></span>
+      <input type="number" style="width:50px;"class="form-control" ng-model="item.quantity" name="newQ">
+      <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
+      <span class="btn btn-danger btn-xs" ng-click="removeItem(item)">X</span>
     </div>
   </li>
 </ul>
