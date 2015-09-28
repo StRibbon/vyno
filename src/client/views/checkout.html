@@ -15,7 +15,7 @@
     <div>
       <input type="number" style="width:50px;"class="form-control" ng-model="item.quantity" name="newQ">
       <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
-      <span class="btn btn-danger btn-xs" ng-click="removeItem(item)">X</span>
+      <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
     </div>
   </li>
 </ul>

@@ -19,6 +19,7 @@ module.exports = function() {
   };
 
   Cart.deleteItem = function(index) {
+    debugger
     Cart.itemList.splice(index,1);
     Cart.addTotalItems();
   };
