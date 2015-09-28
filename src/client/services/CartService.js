@@ -19,13 +19,11 @@ module.exports = function() {
   };
 
   Cart.deleteItem = function(index) {
-    debugger
     Cart.itemList.splice(index,1);
     Cart.addTotalItems();
   };
 
   Cart.addTotalItems = function(){
-
     var arr = Cart.itemList;
     var sum = 0;
     for(var i in arr ){
@@ -33,8 +31,8 @@ module.exports = function() {
     }
     return sum;
   }
+  
   Cart.addTotalPrice = function(items){
-
     var arr = items;
     var sum = 0;
     for(var i in arr ){
