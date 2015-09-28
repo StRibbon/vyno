@@ -12,7 +12,7 @@
     <input type="text" ng-model="newItem.price" class="form-control" />
   </div>
   <div>
-    <label for="">Image</label>
+    <label for="">Image URL</label>
     <input type="text" ng-model="newItem.img" class="form-control" />
   </div>
   <div>
@@ -24,8 +24,8 @@
 <ul>
   <li ng-repeat="item in items">
     {{ item.img }}
-    <a href="#!/items/{{item.id}}">{{ item.name }}</a>
+    <a href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
-    {{ item.price }}
+    {{ item.price | currency }}
   </li>
 </ul>

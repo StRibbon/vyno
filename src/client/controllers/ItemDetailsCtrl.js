@@ -1,9 +1,22 @@
-module.exports = ['$http', '$scope', '$stateParams', function($http, $scope, $stateParams) {
+module.exports = ['$http', '$scope', '$stateParams', '$state', function($http, $scope, $stateParams, $state) {
   
-  // $http.get('/api/items' ).then(res => {
-  //   $scope.items = res.data;
-  // });
+  var itemId = $stateParams.itemId;
 
-  $scope.item = '2';
+  // GET ITEM
+  $http.get('/api/items/' + itemId ).then(res => {
+    $scope.item = res.data;
+  });
+  // UPDATE ITEM
+  $scope.submit = function(){
+    $http.put('/api/items/'+ itemId, $scope.item).then(res => {
+    });
+    $state.go('items');
+  }
+  // DELETE ITEM
+  $scope.delete = function(){
+    $http.delete('api/items/'+ itemId, $scope.item).then(res => {
+    });
+    $state.go('items');
+  }
 
 }];
