@@ -5,8 +5,8 @@
 
 <ul>
   <li ng-repeat="item in cart track by $index">
-    <img src="{{ item.img }}" class="item-list-img">
-    <a href="#/items/{{item.id}}">{{ item.name }}</a>
+    <img ng-src="{{ item.img }}" class="item-list-img">
+    <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
     {{ item.price | currency }}
 
