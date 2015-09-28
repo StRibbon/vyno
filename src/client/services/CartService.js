@@ -1,7 +1,5 @@
 module.exports = function() {
   var Cart = {};
-  Cart.count =0;
-  Cart.num =0;
 
   Cart.itemList = [];
 
@@ -10,10 +8,10 @@ module.exports = function() {
   }
 
   Cart.addItem = function(num, obj) {
-    Cart.count += Number(num);
     obj.quantity = Number(num);
     obj.subTotal = obj.quantity * obj.price;
     Cart.itemList.push(obj);
+    Cart.addTotalItems();
   };
 
   Cart.findItem = function(index) {
@@ -22,21 +20,19 @@ module.exports = function() {
 
   Cart.deleteItem = function(index) {
     Cart.itemList.splice(index,1);
+    Cart.addTotalItems();
   };
 
-  Cart.badge = function(){
-    return Cart.count;
-  }
-  Cart.addTotalItems = function(items){
+  Cart.addTotalItems = function(){
 
-    var arr = items;
+    var arr = Cart.itemList;
     var sum = 0;
     for(var i in arr ){
       sum += arr[i].quantity; 
     }
     return sum;
   }
-  Cart.addTotal = function(items){
+  Cart.addTotalPrice = function(items){
 
     var arr = items;
     var sum = 0;
@@ -44,7 +40,6 @@ module.exports = function() {
       sum += arr[i].subTotal; 
     }
     return sum;
-  }
-  
+  } 
   return Cart;
 };
