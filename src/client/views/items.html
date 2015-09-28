@@ -1,5 +1,8 @@
+<h3>
 Current User: {{user.first_name}} {{user.last_name}}
-Cart({{Badge}}):
+Cart({{Badge}})
+<a ui-sref="checkout" class="btn btn-primary">Checkout</a>
+</h3>
 <ul>
   <li ng-repeat="item in cart">{{item.quantity}} {{item.name}}</li>
 </ul>
@@ -28,7 +31,7 @@ Cart({{Badge}}):
 </form>
 
 <ul>
-  <li ng-repeat="item in items">
+  <li ng-repeat="item in items track by $index">
     <img src="{{ item.img }}" style="width: 200px;">
     <a href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
@@ -45,3 +48,5 @@ Cart({{Badge}}):
     </div>
   </li>
 </ul>
+
+<gs-yoyo-details yoyo-data="yoyo" ng-repeat="item in items"></gs-yoyo-details>

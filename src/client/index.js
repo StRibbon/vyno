@@ -22,6 +22,11 @@ app.config([
         url: '/items/:itemId',
         templateUrl: 'views/item-details.html',
         controller: 'ItemDetailsCtrl'
+      })
+      .state('checkout', {
+        url: '/checkout',
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutCtrl'
       });
   }
 ]);
@@ -29,6 +34,9 @@ app.config([
 app.controller('MainCtrl', require('./controllers/MainCtrl'));
 app.controller('ItemsCtrl', require('./controllers/ItemsCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
+app.controller('CheckoutCtrl', require('./controllers/CheckoutCtrl'));
 // SERVICES
 app.factory('User', require('./services/UserService'));
 app.factory('Cart', require('./services/CartService'));
+// DIRECTIVES
+app.directive('itemsDirective', require('./directives/ItemsDirective'));
