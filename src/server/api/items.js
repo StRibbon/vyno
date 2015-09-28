@@ -1,6 +1,7 @@
 var router = module.exports = require('express').Router();
 var Item = require('../models/item');
 
+// INDEX ITEMS
 router.get('/', function(req, res) {
   Item
     .select(Item.star())
@@ -9,7 +10,7 @@ router.get('/', function(req, res) {
       res.json(rows);
     });
 });
-
+// FIND ITEM
 router.get('/:id', function(req, res) {
   Item
     .select(Item.star())
@@ -19,7 +20,7 @@ router.get('/:id', function(req, res) {
       res.json(rows[0]);
     });
 });
-
+// CREATE ITEM
 router.post('/', function(req, res) {
   Item
     .insert(req.body)
@@ -28,7 +29,7 @@ router.post('/', function(req, res) {
       res.json(rows[0]);
     });
 });
-
+// UPDATE ITEM
 router.put('/:id', function(req, res) {
   Item
     .update(req.body)
@@ -37,7 +38,7 @@ router.put('/:id', function(req, res) {
       res.status(204).end();
     });
 });
-
+// DELETE ITEM
 router.delete('/:id', function(req, res) {
   Item
     .delete()

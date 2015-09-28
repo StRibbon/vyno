@@ -25,9 +25,10 @@ app.config([
       });
   }
 ]);
-
+// CONTROLLERS
 app.controller('MainCtrl', require('./controllers/MainCtrl'));
 app.controller('ItemsCtrl', require('./controllers/ItemsCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
-
-console.log('hello world!');
+// SERVICES
+app.factory('User', require('./services/UserService'));
+app.factory('Cart', require('./services/CartService'));
