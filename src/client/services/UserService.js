@@ -9,8 +9,7 @@ module.exports = function () {
     id: 2323,
     first_name: 'Stephen',
     last_name: 'Ribbon',
-    address: { street: '448 Page St.', city:'San Francisco', post:'90077'},
-    cart: []
+    address: { street: '448 Page St.', city:'San Francisco', post:'90077'}
   }
 
   return factory;

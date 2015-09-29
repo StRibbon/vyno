@@ -1,8 +1,8 @@
 exports.up = function(pgm) {
   pgm.createTable('orders', {
     id: 'id',
-    cost: 'numeric'
-    date: 'text',
+    cost: 'numeric',
+    date: 'date',
     location: 'serial',
     delivered: 'boolean' 
   });
