@@ -12,12 +12,14 @@ var express = require('express');
 var app = express();
 app.use(require('body-parser').json());
 app.use('/api/items', require('./api/items'));
+app.use('/api/users', require('./api/users'));
 app.use(express.static('public'));
 
 var port = 4000;
 if (process.env.PORT) {
   port = Number(process.env.PORT);
 }
+
 app.listen(port, function(err) {
   if (err) {
     console.log(err.stack || `${err.name}: ${err.message}`);

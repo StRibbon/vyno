@@ -3,7 +3,7 @@ exports.up = function(pgm) {
     id: 'id',
     cost: 'numeric',
     date: 'date',
-    location: 'serial',
+    location: 'integer',
     delivered: 'boolean' 
   });
 };

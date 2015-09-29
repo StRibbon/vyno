@@ -1,6 +1,6 @@
 exports.up = function(pgm) {
   pgm.addColumns('orders', {
-    user_id: 'serial'
+    user_id: 'integer'
   });
 };
 

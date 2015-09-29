@@ -10,28 +10,48 @@
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="vendor/animate.css/animate.css"/>
     <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="vendor/Materialize/dist/css/materialize.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   </head>
-  <body class="container">
-    <!-- NavBar -->
-    <nav class="navbar navbar-default navbar-fixed-top"
-         style="border-bottom-width: 0px;">
-      <div class="container">
-        <ul class="nav-ul">
-          <li><a class="nav-a" ui-sref="main">Main</a></li>
-          <li><a class="nav-a" ui-sref="items">Items</a></li>
-          <li><a class="nav-a" ui-sref="checkout">Checkout</a></li>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Vyno</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">Javascript</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="sass.html">Login</a></li>
+          <li><a href="badges.html">Shop</a></li>
+          <li><a href="collapsible.html">About</a></li>
+          <li><a href="mobile.html">Settings</a></li>
         </ul>
       </div>
     </nav>
     <!-- Views -->
-      <div ui-view></div>
+      <div ui-view class="container"></div>
     </div>
     <!-- Scripts -->
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/Materialize/dist/js/materialize.js"></script>
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-animate/angular-animate.js"></script>
+    <script src="vendor/angular-aria/angular-aria.js"></script>
+    <script src="vendor/angular-material/angular-material.js"></script>
+    <script src="vendor/angular-materialize/js/app.js"></script>
     <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="app.js"></script>
+    <script>
+      $( document ).ready(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
   </body>
 </html>

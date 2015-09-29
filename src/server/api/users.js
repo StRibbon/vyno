@@ -1,5 +1,7 @@
 var router = module.exports = require('express').Router();
 var User = require('../models/user');
+var bcrypt = require('bcrypt');
+var SALT_WORK_FACTOR = 10;
 
 // INDEX Users
 router.get('/', function(req, res) {
@@ -22,12 +24,26 @@ router.get('/:id', function(req, res) {
 });
 // CREATE User
 router.post('/', function(req, res) {
-  User
-    .insert(req.body)
-    .returning(User.star())
-    .exec(function(err, rows) {
-      res.json(rows[0]);
+  user = req.body;
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, function(err, hash) {
+      if (err) {
+        return next(err);
+      }
+      user.password = hash;
+      User
+        .insert(user)
+        .returning(User.star())
+        .exec(function(err, rows) {
+          res.json(rows[0]);
+      });
     });
+  });
+
+  
 });
 // UPDATE User
 router.put('/:id', function(req, res) {
