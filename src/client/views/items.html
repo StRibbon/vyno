@@ -1,8 +1,7 @@
-<h3>
 Current User: {{user.first_name}} {{user.last_name}}
-Cart({{Badge}})
-<a ui-sref="checkout" class="btn btn-primary">Checkout</a>
-</h3>
+
+<a ui-sref="checkout" class="btn btn-primary">Checkout {{Badge}}</a>
+
 <ul>
   <li ng-repeat="item in cart">{{item.quantity}} {{item.name}}</li>
 </ul>
@@ -11,6 +10,14 @@ Cart({{Badge}})
   <div>
     <label for="">Name</label>
     <input type="text" ng-model="newItem.name" class="form-control" />
+  </div>
+  <div>
+    <label for="">Maker</label>
+    <input type="text" ng-model="newItem.maker" class="form-control" />
+  </div>
+  <div>
+    <label for="">Year</label>
+    <input type="text" ng-model="newItem.year" class="form-control" />
   </div>
   <div>
     <label for="">Description</label>
@@ -30,23 +37,26 @@ Cart({{Badge}})
   </div>
 </form>
 
-<ul>
-  <li ng-repeat="item in items track by $index">
+<div>
+  <div ng-repeat="item in items track by $index" class="card-panel hoverable">
     <img ng-src="{{ item.img }}" class="item-list-img">
     <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+    {{ item.maker }}
+    {{ item.year }}
+    {{ item.location }}
     {{ item.description }}
     {{ item.price | currency }}
-    <div>
-      <select class="b" ng-model="selected" ng-init="selected='1'">
-            <option ng-selected="setQuantity(selected)">1</option>
-            <option ng-selected="setQuantity(selected)">2</option>
-            <option ng-selected="setQuantity(selected)">3</option>
-            <option ng-selected="setQuantity(selected)">4</option>
-          </select>
-          <span class="btn btn-success btn-xs" ng-click="addItem(selected, item)">
-          <span class="glyphicon glyphicon-plus"></span></span>
+    <div class="input=field col s12">
+      <select ng-model="selected" ng-init="selected='1'">
+        <option ng-selected="setQuantity(selected)">1</option>
+        <option ng-selected="setQuantity(selected)">2</option>
+        <option ng-selected="setQuantity(selected)">3</option>
+        <option ng-selected="setQuantity(selected)">4</option>
+      </select>
+        <span class="btn btn-success btn-xs" ng-click="addItem(selected, item)">
+        <span class="glyphicon glyphicon-plus"></span></span>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
 
 <gs-yoyo-details yoyo-data="yoyo" ng-repeat="item in items"></gs-yoyo-details>

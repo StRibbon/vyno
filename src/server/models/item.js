@@ -4,6 +4,9 @@ module.exports = db.define({
   columns: {
     id: { primaryKey: true },
     name: {},
+    maker: {},
+    year: {},
+    location: {},
     description: {},
     img: {},
     price: {}
