@@ -1,11 +1,12 @@
-<a ui-sref="checkout" ng-show="Badge >= 1">
-  <i class="medium material-icons">shopping_cart</i>
-  <span>{{Badge}}</span>
+<a class="btn" ui-sref="checkout" ng-show="Badge >= 1">
+<i class="medium material-icons">shopping_cart</i>
+<span>{{Badge}}</span>
 </a>
 
-<ul>
+<!-- LIST CART ITEMS ON CLICK --!>
+<!-- <ul>
   <li ng-repeat="item in cart track by $index">{{item.quantity}} {{item.name}}</li>
-</ul>
+</ul> -->
 
 
 <div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel">
@@ -26,7 +27,7 @@
       <div>
         
         {{ item.price | currency }}
-        <a class="btn-floating btn-medium waves-effect waves-light green" ng-click="addItem(1, item)">
+        <a class="btn-floating btn-medium waves-effect waves-light brown" ng-click="addItem(1, item)">
         <i class="mdi-content-add"></i></a>
       </div>
     </div>

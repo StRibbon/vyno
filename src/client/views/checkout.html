@@ -1,21 +1,44 @@
-<h1>Checkout</h1>
-
-<span class="badge">{{Badge}}</span>
+<h4>Checkout: {{Badge}}</h4>
 <span>  Total {{Total | currency}}</span>
 
-<ul>
-  <li ng-repeat="item in cart track by $index">
-    <img ng-src="{{ item.img }}" class="item-list-img">
-    <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-    {{ item.description }}
-    {{ item.price | currency }}
 
-    <strong>{{item.subTotal | currency}}</strong><br>
-
-    <div>
-      <input type="number" style="width:50px;"class="form-control" ng-model="item.quantity" name="newQ">
-      <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
-      <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
+  <div ng-repeat="item in cart track by $index" class="row">
+    <div class="col s2 m3 l4">
+      <img ng-src="{{ item.img }}" class="responsive-img">
     </div>
-  </li>
-</ul>
+    <div class="col s10 m9 l8">
+      <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+      {{ item.description }}
+      {{ item.price | currency }}
+      Subtotal: {{item.subTotal | currency}}
+
+        <input type="number" style="width:50px;"class="form-control" ng-model="item.quantity" name="newQ">
+        <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
+        <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
+    </div>
+  </div>
+
+
+<!-- <div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel">
+    <div class="col s4 m4 l3">
+      <img ng-src="{{ item.img }}" class="responsive-img">
+    </div>
+    
+    <div class="col s8 m6 l6" flow-text>
+      <h4>
+        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+        {{ item.maker }}
+        {{ item.year }}
+        {{ item.location }}
+      </h4>
+      <div>
+        {{ item.description }}
+      </div>    
+      <div>
+        
+        {{ item.price | currency }}
+        <a class="btn-floating btn-medium waves-effect waves-light green" ng-click="addItem(1, item)">
+        <i class="mdi-content-add"></i></a>
+      </div>
+    </div>
+</div> -->

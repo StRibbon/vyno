@@ -1,4 +1,3 @@
-module.exports = function($scope) {
-  $scope.test = "Testing...";
-  console.log("required!");
+module.exports = function($scope, Cart) {
+  $scope.Badge = Cart.addTotalItems();
 };
