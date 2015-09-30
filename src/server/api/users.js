@@ -2,6 +2,40 @@ var router = module.exports = require('express').Router();
 var User = require('../models/user');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
+var jwt = require('jsonwebtoken');
+
+
+router.use(function(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, process.env.SECRET, function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;    
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({ 
+        success: false, 
+        message: 'No token provided.' 
+    });
+    
+  }
+});
+
 
 // INDEX Users
 router.get('/', function(req, res) {
@@ -41,18 +75,45 @@ router.post('/', function(req, res) {
           res.json(rows[0]);
       });
     });
-  });
+  });  
+});
+router.post('/authenticate', function(req, res) {
+  User
+    .select(User.star())
+    .from(User)
+    .where(User.email.equals(req.body.email))
+    .exec(function(err, rows) {
+      console.log('FOUND EMAIL');
+      var user = rows[0];
+      var password = rows[0].password;
+      bcrypt.compare(req.body.password, password, function (err, isMatch) {
+          if (isMatch) {
+            var token = jwt.sign({id: user.id}, process.env.SECRET, {
+              expiresInMinutes: 1440 // expires in 24 hours
+            });
+            res.json({
+              success: true,
+              message: 'Enjoy your token!',
+              token: token,
+              email: user.email
+            });
+          } else {
+            res.status(401).end();
+          }
+        });
+      console.log(err);
+    });
 
-  
 });
 // UPDATE User
 router.put('/:id', function(req, res) {
-  User
-    .update(req.body)
-    .where(User.id.equals(req.params.id))
-    .exec(function(err, rows) {
-      res.status(204).end();
-    });
+  res.send('authenticated');
+  // User
+  //   .update(req.body)
+  //   .where(User.id.equals(req.params.id))
+  //   .exec(function(err, rows) {
+  //     res.status(204).end();
+  //   });
 });
 // DELETE User
 router.delete('/:id', function(req, res) {
