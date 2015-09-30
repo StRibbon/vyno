@@ -22,6 +22,7 @@ module.exports = function() {
     }
     else if(arr.length == 1){
         arr[0].quantity +=1;
+        obj.subTotal = obj.quantity * obj.price;
     }
     else {
       console.log('error')

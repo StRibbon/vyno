@@ -1,5 +1,5 @@
 
-<h4 style="text-align: center">Items {{Badge}} Total {{Total | currency}}
+<h4 style="text-align: left, padding: 3rem;">Items {{Badge}} Total {{Total | currency}}
     <a class="waves-effect waves-light btn">Confirm Order</a>
 </h4>
 
@@ -9,14 +9,17 @@
       <img ng-src="{{ item.img }}" class="responsive-img">
     </div>
     <div class="col s10 m9 l8">
-      <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-      {{ item.description }}
-      <!-- {{ item.price | currency }} -->
-
-        <h4>
+      <h4>
+        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+        {{item.maker}}
+        {{item.year}}
+        {{item.location}}
+        ${{ item.price }}
+      </h4>  
+        <h5>
           <span>Subtotal: {{item.subTotal | currency}}</span>
-        </h4>
-        <input type="number" style="width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
+        </h5>
+        <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
         <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
         <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
     </div>
