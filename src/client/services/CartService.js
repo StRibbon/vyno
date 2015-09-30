@@ -31,7 +31,7 @@ module.exports = function() {
     }
     return sum;
   }
-  
+
   Cart.addTotalPrice = function(items){
     var arr = items;
     var sum = 0;

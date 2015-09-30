@@ -30,7 +30,6 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $
   // REMOVE ITEM FROM CART
   $scope.removeItem = function(index){
     console.log(index);
-    debugger
     Cart.deleteItem(index);
     $scope.Badge = Cart.addTotalItems($scope.cart);
     $scope.Total = Cart.addTotalPrice($scope.cart); 

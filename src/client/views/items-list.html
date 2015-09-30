@@ -1,18 +1,19 @@
-Current User: {{user.first_name}} {{user.last_name}}
-
-<a ui-sref="checkout" class="btn btn-primary">Checkout {{Badge}}</a>
+<a ui-sref="checkout" ng-show="Badge >= 1">
+  <i class="medium material-icons">shopping_cart</i>
+  <span>{{Badge}}</span>
+</a>
 
 <ul>
   <li ng-repeat="item in cart track by $index">{{item.quantity}} {{item.name}}</li>
 </ul>
 
 
-<div ng-repeat="item in items track by $index" class="row card-panel hoverable">
+<div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel">
     <div class="col s4 m4 l3">
       <img ng-src="{{ item.img }}" class="responsive-img">
     </div>
     
-    <div class="col s8 m6 l3">
+    <div class="col s8 m6 l6" flow-text>
       <h4>
         <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
         {{ item.maker }}
@@ -24,11 +25,9 @@ Current User: {{user.first_name}} {{user.last_name}}
       </div>    
       <div>
         
-        <h5>{{ item.price | currency }}</h5>
-        <span class="btn btn-success btn-xs" ng-click="addItem(1, item)">
-        <span class="glyphicon glyphicon-plus"></span></span>
-        <span class="btn btn-warning btn-xs" ng-click="removeItem($index)">
-        <span class="glyphicon glyphicon-minus"></span></span>
+        {{ item.price | currency }}
+        <a class="btn-floating btn-medium waves-effect waves-light green" ng-click="addItem(1, item)">
+        <i class="mdi-content-add"></i></a>
       </div>
     </div>
 </div> <!-- END REPEAT -->
