@@ -7,12 +7,26 @@ module.exports = function() {
     return Cart.itemList;
   }
 
-  Cart.addItem = function(num, obj) {
-    obj.quantity = Number(num);
-    obj.subTotal = obj.quantity * obj.price;
-    Cart.itemList.push(obj);
-    Cart.addTotalItems();
-  };
+  Cart.addItem = function(num, obj){
+
+    var arr = Cart.itemList.filter(function(innerItem){
+      return innerItem.id == obj.id;
+    });
+    console.log(arr);
+    if(arr.length == 0){
+      obj.quantity = Number(num);
+      obj.subTotal = obj.quantity * obj.price;
+      Cart.itemList.push(obj);
+      Cart.addTotalItems();
+      return;
+    }
+    else if(arr.length == 1){
+        arr[0].quantity +=1;
+    }
+    else {
+      console.log('error')
+    }
+  }
 
   Cart.findItem = function(index) {
     return Cart.itemList[index];
