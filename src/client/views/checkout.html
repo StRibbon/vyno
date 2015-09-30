@@ -1,30 +1,30 @@
+<div class="container">
+  <h4 style="text-align: left, padding: 3rem;">Items {{Badge}} Total {{Total | currency}}
+  </h4>
+  <a class="waves-effect waves-light btn">Confirm Order</a>
 
-<h4 style="text-align: left, padding: 3rem;">Items {{Badge}} Total {{Total | currency}}
-    <a class="waves-effect waves-light btn">Confirm Order</a>
-</h4>
 
-
-  <div ng-repeat="item in cart track by $index" class="row">
-    <div class="col s2 m3 l4">
-      <img ng-src="{{ item.img }}" class="responsive-img">
+    <div ng-repeat="item in cart track by $index" class="row">
+      <div class="col s2 m3 l4">
+        <img ng-src="{{ item.img }}" class="responsive-img">
+      </div>
+      <div class="col s10 m9 l8">
+        <h4>
+          <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+          {{item.maker}}
+          {{item.year}}
+          {{item.location}}
+          ${{ item.price }}
+        </h4>  
+          <h5>
+            <span>Subtotal: {{item.subTotal | currency}}</span>
+          </h5>
+          <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
+          <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
+          <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
+      </div>
     </div>
-    <div class="col s10 m9 l8">
-      <h4>
-        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-        {{item.maker}}
-        {{item.year}}
-        {{item.location}}
-        ${{ item.price }}
-      </h4>  
-        <h5>
-          <span>Subtotal: {{item.subTotal | currency}}</span>
-        </h5>
-        <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
-        <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
-        <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
-    </div>
-  </div>
-
+</div>
 
 <!-- <div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel">
     <div class="col s4 m4 l3">

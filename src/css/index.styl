@@ -1,7 +1,12 @@
 body {
   font-family: 'Caveat', cursive;
   background-color: #fffcf2;
-
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 
 .jumbotron {
@@ -12,6 +17,23 @@ body {
   background-position: center; 
 }
 
+.welcome-container {
+  margin-top: 100px;
+}
+
+.welcome-img {
+  width: 100%;
+ /* background-size: cover;
+  background-position: center;*/
+  position: absolute;
+  z-index: 1;
+}
+
+.welcome-text {
+  z-index: 2;
+}
+
 @import 'navbar';
 @import 'list';
 @import 'checkout';
+@import 'footer';
