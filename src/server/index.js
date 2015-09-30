@@ -11,6 +11,7 @@ var db = require( './db' );
 var express = require('express');
 var app = express();
 app.use(require('body-parser').json());
+// app.use(require('flash')());
 app.use('/api/items', require('./api/items'));
 app.use('/api/users', require('./api/users'));
 app.use(express.static('public'));
