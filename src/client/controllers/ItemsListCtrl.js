@@ -13,10 +13,6 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $
   };
 
   // CART SERVICES
-  $scope.addItem = function(quantity, item){
-    Cart.addItem(quantity, item);
-    $scope.Badge = Cart.addTotalItems();
-  };
   
   // GET DEMO USER
   $scope.user = User.getUser();
@@ -26,9 +22,15 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $
   $scope.Badge = Cart.addTotalItems();
   // TOTAL PRICE OF CART
   $scope.Total = Cart.addTotalPrice($scope.cart);
+  // ADD ITEM TO CART
+  $scope.addItem = function(quantity, item){
+    Cart.addItem(quantity, item);
+    $scope.Badge = Cart.addTotalItems();
+  };
   // REMOVE ITEM FROM CART
   $scope.removeItem = function(index){
     console.log(index);
+    debugger
     Cart.deleteItem(index);
     $scope.Badge = Cart.addTotalItems($scope.cart);
     $scope.Total = Cart.addTotalPrice($scope.cart); 

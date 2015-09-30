@@ -1,0 +1,48 @@
+Current User: {{user.first_name}} {{user.last_name}}
+
+<a ui-sref="checkout" class="btn btn-primary">Checkout {{Badge}}</a>
+
+<ul>
+  <li ng-repeat="item in cart track by $index">{{item.quantity}} {{item.name}}</li>
+</ul>
+
+
+<div ng-repeat="item in items track by $index" class="row card-panel hoverable">
+    <div class="col s4 m4 l3">
+      <img ng-src="{{ item.img }}" class="responsive-img">
+    </div>
+    
+    <div class="col s8 m6 l3">
+      <h4>
+        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+        {{ item.maker }}
+        {{ item.year }}
+        {{ item.location }}
+      </h4>
+      <div>
+        {{ item.description }}
+      </div>    
+      <div>
+        
+        <h5>{{ item.price | currency }}</h5>
+        <span class="btn btn-success btn-xs" ng-click="addItem(1, item)">
+        <span class="glyphicon glyphicon-plus"></span></span>
+        <span class="btn btn-warning btn-xs" ng-click="removeItem($index)">
+        <span class="glyphicon glyphicon-minus"></span></span>
+      </div>
+    </div>
+</div> <!-- END REPEAT -->
+
+
+<div class="row">
+      <div class="col s2">1</div>
+      <div class="col s2">2</div>
+      <div class="col s2">3</div>
+      <div class="col s2">4</div>
+      <div class="col s2">5</div>
+      <div class="col s2">6</div>
+</div>
+<div class="row">
+      <div class="col s2">1</div>
+      <div class="col s10">2</div>
+</div>

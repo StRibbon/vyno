@@ -15,8 +15,8 @@ app.config([
       })
       .state('items', {
         url: '/items',
-        templateUrl: 'views/items.html',
-        controller: 'ItemsCtrl'
+        templateUrl: 'views/items-list.html',
+        controller: 'ItemsListCtrl'
       })
       .state('itemDetails', {
         url: '/items/:itemId',
@@ -32,7 +32,7 @@ app.config([
 ]);
 // CONTROLLERS
 app.controller('MainCtrl', require('./controllers/MainCtrl'));
-app.controller('ItemsCtrl', require('./controllers/ItemsCtrl'));
+app.controller('ItemsListCtrl', require('./controllers/ItemsListCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
 app.controller('CheckoutCtrl', require('./controllers/CheckoutCtrl'));
 // SERVICES
