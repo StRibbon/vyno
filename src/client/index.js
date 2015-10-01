@@ -23,6 +23,16 @@ app.config([
         templateUrl: 'views/item-details.html',
         controller: 'ItemDetailsCtrl'
       })
+      .state('login', {
+        url: '/login',
+        templateUrl: 'views/login.html',
+        controller: 'MainCtrl'
+      })
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'views/signup.html',
+        controller: 'MainCtrl'
+      })
       .state('checkout', {
         url: '/checkout',
         templateUrl: 'views/checkout.html',

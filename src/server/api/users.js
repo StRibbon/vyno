@@ -3,12 +3,14 @@ var User = require('../models/user');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 var jwt = require('jsonwebtoken');
+var cookieParser = require('cookie-parser');
+router.use(cookieParser());
 
 
-router.use(function(req, res, next) {
+var auth = function(req, res, next) {
 
   // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
 
   // decode token
   if (token) {
@@ -34,7 +36,7 @@ router.use(function(req, res, next) {
     });
     
   }
-});
+};
 
 
 // INDEX Users
@@ -57,7 +59,7 @@ router.get('/:id', function(req, res) {
     });
 });
 // CREATE User
-router.post('/', function(req, res) {
+router.post('/', function(req, res, next) {
   user = req.body;
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) {
@@ -72,11 +74,17 @@ router.post('/', function(req, res) {
         .insert(user)
         .returning(User.star())
         .exec(function(err, rows) {
+          var token = createToken(user);
+          setCookie(res, token);
+          rows[0].token = token;
+          delete rows[0].password;
           res.json(rows[0]);
       });
     });
   });  
 });
+
+// AUTHENTICATE
 router.post('/authenticate', function(req, res) {
   User
     .select(User.star())
@@ -88,9 +96,8 @@ router.post('/authenticate', function(req, res) {
       var password = rows[0].password;
       bcrypt.compare(req.body.password, password, function (err, isMatch) {
           if (isMatch) {
-            var token = jwt.sign({id: user.id}, process.env.SECRET, {
-              expiresInMinutes: 1440 // expires in 24 hours
-            });
+            var token = createToken(user);
+            setCookie(res, token);
             res.json({
               success: true,
               message: 'Enjoy your token!',
@@ -106,14 +113,15 @@ router.post('/authenticate', function(req, res) {
 
 });
 // UPDATE User
-router.put('/:id', function(req, res) {
-  res.send('authenticated');
-  // User
-  //   .update(req.body)
-  //   .where(User.id.equals(req.params.id))
-  //   .exec(function(err, rows) {
-  //     res.status(204).end();
-  //   });
+router.put('/:id', auth, function(req, res) {
+  // res.send('authenticated');
+  User
+    .update(req.body)
+    .where(User.id.equals(req.params.id))
+    .exec(function(err, rows) {
+      console.log(User);
+      res.status(204).end();
+    });
 });
 // DELETE User
 router.delete('/:id', function(req, res) {
@@ -125,3 +133,16 @@ router.delete('/:id', function(req, res) {
       res.status(204).end();
     });
 });
+
+// AUTH METHODS
+
+var createToken = function(user){ 
+  var token = jwt.sign({id: user.id}, process.env.SECRET, {
+    expiresInMinutes: 1440
+  });
+  return token;
+};
+
+var setCookie = function(res, token){
+  res.cookie('token', token, {expires: new Date(Date.now()+900000)} )
+};

@@ -10,7 +10,9 @@ var db = require( './db' );
 
 var express = require('express');
 var app = express();
-var jwt = require('jsonwebtoken');
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 app.use(require('body-parser').json());
 app.use(require('morgan')('combined'));
 // app.use(require('flash')());
