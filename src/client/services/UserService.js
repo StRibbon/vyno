@@ -2,7 +2,12 @@ module.exports = function ($http, $state) {
   var User = {};
   User.userData = {};
   User.getUser = function () {
-    return User.userData.data;
+    if (User.userData){
+      return User.userData.data;
+    } else {
+      return null;
+    }
+    
   }
 
   User.login = function(user) {
@@ -19,13 +24,13 @@ module.exports = function ($http, $state) {
        $state.go('items');
     });
   }
-  // User.logout = function(newUser) {
-  //   $http.post('/api/users', newUser).then(res => {
-  //     console.log(res);
-  //      userData = res;
-  //      $state.go('items');
-  //   });
-  // }
+  User.logout = function(user) {
+    $http.post('/api/users', user).then(res => {
+      console.log(res);
+       userData = null;
+       $state.go('items');
+    });
+  }
   // User.updateUser = function(user)
   //   $http.put('/api/users/'+ user.id, $scope.user).then(res => {
   

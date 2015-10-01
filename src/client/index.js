@@ -46,6 +46,7 @@ app.controller('ItemsListCtrl', require('./controllers/ItemsListCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
 app.controller('CheckoutCtrl', require('./controllers/CheckoutCtrl'));
 // SERVICES
+app.factory('UI', require('./services/UiService'));
 app.factory('User', require('./services/UserService'));
 app.factory('Cart', require('./services/CartService'));
 // DIRECTIVES

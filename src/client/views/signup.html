@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 <form ng-submit="signUp(newUser)" name="signup_form" class="form-group">
   <div>
     <label for="">first name</label>
@@ -16,32 +16,39 @@
     <br>
     <button type="submit" class="btn btn-success">Sign-Up</button>
 </form>
-</div>
+</div> -->
 
 
-<!-- <div id="login-page" class="row">
+<div id="login-page" class="row">
     <div class="col s12 z-depth-4 card-panel">
-      <form class="login-form">
+      <form class="signup_form" ng-submit="signUp(newUser)">
         <div class="row">
-          <div class="input-field col s12 center">
+          <!-- <div class="input-field col s12 center">
             
             <h3>Vyno</h3>
             <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
             <p class="center login-form-text">An on-demand artisan products delivery app</p>
-          </div>
+          </div> -->
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-social-person-outline prefix"></i>
-            <input id="username" type="text">
-            <label for="username" class="center-align">Username</label>
+            <input name="email" id="email" type="email" ng-model="newUser.email">
+            <label for="username" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input id="password" type="password" name="password" ng-model="newUser.password">
+            <label for="password">Password</label>
           </div>
         </div>
         <div class="row margin">
           <div class="input-field col s12">
             <i class="mdi-action-lock-outline prefix"></i>
             <input id="password" type="password">
-            <label for="password">Password</label>
+            <label for="password">Confirm Password</label>
           </div>
         </div>
         <div class="row">          
@@ -52,19 +59,18 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <a href="index.html" class="btn waves-effect waves-light col s12">Login</a>
+            <button type="submit" class="btn waves-effect waves-light col s12">SIGNUP</button>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="page-register.html">Register Now!</a></p>
+            <p class="margin medium-small"><a href="page-register.html">Already registered?</a></p>
           </div>
           <div class="input-field col s6 m6 l6">
               <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
           </div>          
         </div>
-
       </form>
     </div>
   </div>
- -->
+

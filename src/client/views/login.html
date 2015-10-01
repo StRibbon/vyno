@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <form ng-submit="loginUser(user)" name="login_form" class="form-group">
     <div>
       <label for="">email</label>
@@ -13,4 +13,53 @@
       <button type="submit" class="btn btn-success">Log-in</button>
       <a class="btn btn-warning" ui-sref="signup">Sign-Up</a>
   </form>
-</div>
+</div> -->
+
+<div id="login-page" class="row">
+    <div class="col s12 z-depth-4 card-panel">
+      <form ng-submit="loginUser(user)" name="login_form">
+       <!--  <div class="row">
+          <div class="input-field col s12 center">
+            
+            <h3>Vyno</h3>
+            <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+            <p class="center login-form-text">An on-demand artisan products delivery app</p>
+          </div>
+        </div> -->
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-social-person-outline prefix"></i>
+            <input type="email" id="email" name="email" ng-model="user.email">
+            <label for="email" class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="mdi-action-lock-outline prefix"></i>
+            <input name="password" id="password" type="password" ng-model="user.password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="input-field col s12 m12 l12  login-text">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Remember me</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn waves-effect waves-light col s12" type="submit">Login</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <p class="margin medium-small"><a ui-sref="signup">Register Now!</a></p>
+          </div>
+          <div class="input-field col s6 m6 l6">
+              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password?</a></p>
+          </div>          
+        </div>
+
+      </form>
+    </div>
+  </div>

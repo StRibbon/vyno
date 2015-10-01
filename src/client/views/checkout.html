@@ -1,8 +1,9 @@
 <div class="container">
-  <h4 style="text-align: left, padding: 3rem;">Items {{Badge}} Total {{Total | currency}} {{user.email}}
-  </h4>
-  <a class="waves-effect waves-light btn">Confirm Order</a>
-
+  <div class="checkout-header">
+    <h4 style="text-align: center, padding: 3rem;">Items {{Badge}} Total {{Total | currency}} {{user.email}}
+      <a class="waves-effect waves-light btn">Confirm Order</a>
+    </h4>
+  </div>
 
     <div ng-repeat="item in cart track by $index" class="row">
       <div class="col s2 m3 l4">
