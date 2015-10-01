@@ -7,7 +7,7 @@ module.exports = function ($http) {
 
   factory.login = function(user) {
     $http.post('/api/users/authenticate', user).then(res => {
-      
+      console.log(res);
     });
   }
   factory.signup = function(newUser) {
