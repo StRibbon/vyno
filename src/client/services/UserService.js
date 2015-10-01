@@ -1,21 +1,32 @@
-module.exports = function ($http) {
-  var factory = {};
-  factory.userData = {};
-  factory.getUser = function () {
-    return User;
+module.exports = function ($http, $state) {
+  var User = {};
+  User.userData = {};
+  User.getUser = function () {
+    return User.userData.data;
   }
 
-  factory.login = function(user) {
+  User.login = function(user) {
     $http.post('/api/users/authenticate', user).then(res => {
       console.log(res);
+      User.userData = res;
+      $state.go('items');
     });
   }
-  factory.signup = function(newUser) {
+  User.signup = function(newUser) {
     $http.post('/api/users', newUser).then(res => {
       console.log(res);
+       User.userData = res;
+       $state.go('items');
     });
   }
-  // factory.updateUser = function(user)
+  // User.logout = function(newUser) {
+  //   $http.post('/api/users', newUser).then(res => {
+  //     console.log(res);
+  //      userData = res;
+  //      $state.go('items');
+  //   });
+  // }
+  // User.updateUser = function(user)
   //   $http.put('/api/users/'+ user.id, $scope.user).then(res => {
   
   // });
@@ -27,5 +38,5 @@ module.exports = function ($http) {
   //   address: { street: '448 Page St.', city:'San Francisco', post:'90077'}
   // }
 
-  return factory;
+  return User;
 };

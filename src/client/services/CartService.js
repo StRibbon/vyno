@@ -12,7 +12,6 @@ module.exports = function() {
     var arr = Cart.itemList.filter(function(innerItem){
       return innerItem.id == obj.id;
     });
-    console.log(arr);
     if(arr.length == 0){
       obj.quantity = Number(num);
       obj.subTotal = obj.quantity * obj.price;

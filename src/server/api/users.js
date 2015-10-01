@@ -6,15 +6,11 @@ var jwt = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 router.use(cookieParser());
 
-
 var auth = function(req, res, next) {
-
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.cookies.token;
-
   // decode token
   if (token) {
-
     // verifies secret and checks exp
     jwt.verify(token, process.env.SECRET, function(err, decoded) {      
       if (err) {
@@ -25,19 +21,15 @@ var auth = function(req, res, next) {
         next();
       }
     });
-
   } else {
-
     // if there is no token
     // return an error
     return res.status(403).send({ 
         success: false, 
         message: 'No token provided.' 
-    });
-    
+    });   
   }
 };
-
 
 // INDEX Users
 router.get('/', function(req, res) {
@@ -124,7 +116,7 @@ router.put('/:id', auth, function(req, res) {
     });
 });
 // DELETE User
-router.delete('/:id', function(req, res) {
+router.delete('/:id', auth, function(req, res) {
   User
     .delete()
     .from(User)
