@@ -19,11 +19,7 @@ module.exports = function($cookieStore) {
 
   Cart.getMyCart = function () {
     debugger
-    if(Cart.itemList.length !== 0){
-      $cookieStore.put('myCart', Cart.itemList);
-    }
     Cart.myCart = $cookieStore.get('myCart');  
-    console.log(Cart.myCart);
     return Cart.myCart;
   }
 
@@ -35,7 +31,7 @@ module.exports = function($cookieStore) {
       obj.quantity = Number(num);
       obj.subTotal = obj.quantity * obj.price;
       Cart.itemList.push(obj);
-      Cart.addTotalItems();
+      Cart.getTotalItemsInCart();
       return;
     }
     else if(arr.length == 1){
@@ -54,12 +50,12 @@ module.exports = function($cookieStore) {
 
   Cart.deleteItem = function(index) {
     Cart.itemList.splice(index,1);
-    Cart.addTotalItems();
+    Cart.getTotalItemsInCart();
     Cart.updateMyCart();
   };
 
-  Cart.addTotalItems = function(){
-    var arr = Cart.itemList;
+  Cart.getTotalItemsInCart = function(){
+    var arr = Cart.getMyCart();
     var sum = 0;
     for(var i in arr ){
       sum += arr[i].quantity; 

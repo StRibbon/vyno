@@ -4,7 +4,7 @@ module.exports = function($scope, $state, Cart, User, $cookieStore) {
     $('.side-nav').sideNav('hide');
   }
   // ITEM SERVICES
-  $scope.Badge = Cart.addTotalItems();
+  $scope.Badge = Cart.getTotalItemsInCart();
   
   //USER SERVICES
   $scope.getLoggedInUser = function(){
