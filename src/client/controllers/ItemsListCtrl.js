@@ -25,6 +25,7 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', f
   $scope.Total = Cart.addTotalPrice($scope.cart);
   // ADD ITEM TO CART
   $scope.addItem = function(quantity, item){
+    debugger
     Cart.addItem(quantity, item);
     $scope.Badge = Cart.getTotalItemsInCart();
   };

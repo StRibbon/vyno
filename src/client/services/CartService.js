@@ -1,7 +1,13 @@
 module.exports = function($cookieStore) {
   var Cart = {};
 
+  Cart.getMyCart = function () {
+    Cart.myCart = $cookieStore.get('myCart');
+    return Cart.myCart;
+  }
+
   Cart.itemList = [];
+  // Cart.itemList.push(Cart.getMyCart());
 
   // Cookies
 
@@ -14,16 +20,25 @@ module.exports = function($cookieStore) {
   //   }
   // }
   Cart.updateMyCart = function(){
+    debugger
     $cookieStore.put('myCart', Cart.itemList);
   };
 
-  Cart.getMyCart = function () {
+  Cart.updateItem = function (index, item) {
     debugger
-    Cart.myCart = $cookieStore.get('myCart');  
-    return Cart.myCart;
+    console.log(item);
+    var obj = Cart.getMyCart().filter(function(innerItem){
+      return innerItem.id == item.id;
+    });
+    obj[0].quantity = item.quantity;
+    console.log(obj);
+    Cart.itemList = Cart.getMyCart();
+    Cart.itemList[index].quantity = obj[0].quantity;
+    Cart.updateMyCart();
   }
 
   Cart.addItem = function(num, obj){
+    debugger
     var arr = Cart.itemList.filter(function(innerItem){
       return innerItem.id == obj.id;
     });
@@ -32,6 +47,7 @@ module.exports = function($cookieStore) {
       obj.subTotal = obj.quantity * obj.price;
       Cart.itemList.push(obj);
       Cart.getTotalItemsInCart();
+      Cart.updateMyCart();
       return;
     }
     else if(arr.length == 1){
@@ -50,11 +66,12 @@ module.exports = function($cookieStore) {
 
   Cart.deleteItem = function(index) {
     Cart.itemList.splice(index,1);
-    Cart.getTotalItemsInCart();
     Cart.updateMyCart();
+    Cart.getTotalItemsInCart();
   };
 
   Cart.getTotalItemsInCart = function(){
+    debugger
     var arr = Cart.getMyCart();
     var sum = 0;
     for(var i in arr ){

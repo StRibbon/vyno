@@ -16,9 +16,10 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', '
     $scope.Total = Cart.addTotalPrice($scope.cart); 
   };
   // UPDATE ITEM QUANTITY
-  $scope.updateItem = function(item){
+  $scope.updateItem = function(index, item){
     item.subTotal = item.quantity * item.price;
-    $scope.Badge = Cart.getTotalItemsInCart($scope.cart);
+    Cart.updateItem(index, item);
+    $scope.Badge = Cart.getTotalItemsInCart();
     $scope.Total = Cart.addTotalPrice($scope.cart); 
   };
   
