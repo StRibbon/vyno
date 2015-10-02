@@ -1,7 +1,9 @@
-module.exports = function() {
+module.exports = function($cookieStore) {
   var Cart = {};
 
   Cart.itemList = [];
+
+  // Cookies
 
   Cart.getItems = function () {
     return Cart.itemList;

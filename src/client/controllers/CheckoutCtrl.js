@@ -1,5 +1,4 @@
-module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $scope, $state, User, Cart) {
-
+module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', '$cookies', function($http, $scope, $state, User, Cart, $cookieStore, $cookies) {
   // GET DEMO USER
   $scope.user = User.getUser();
   // GET ITEMS IN CART

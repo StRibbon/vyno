@@ -104,6 +104,12 @@ router.post('/authenticate', function(req, res) {
     });
 
 });
+
+//LOGOUT
+router.get('/logout', function(req, res){
+  console.log(req);
+});
+
 // UPDATE User
 router.put('/:id', auth, function(req, res) {
   // res.send('authenticated');
@@ -136,5 +142,5 @@ var createToken = function(user){
 };
 
 var setCookie = function(res, token){
-  res.cookie('token', token, {expires: new Date(Date.now()+900000)} )
+  res.cookie('token', token, {expires: new Date(Date.now()+90000000)} )
 };

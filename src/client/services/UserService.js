@@ -1,35 +1,36 @@
-module.exports = function ($http, $state) {
+module.exports = function ($http, $state, $cookieStore) {
   var User = {};
   User.userData = {};
   User.getUser = function () {
-    if (User.userData){
-      return User.userData.data;
-    } else {
-      return null;
-    }
-    
+    User.userData.data = $cookieStore.get('userData');
+    console.log(User.userData.data);
+    return User.userData.data;
+    // if (User.userData){
+    //   return User.userData.data;
+    // } else {
+    //   return null;
+    // }  
   }
-
   User.login = function(user) {
     $http.post('/api/users/authenticate', user).then(res => {
-      console.log(res);
-      User.userData = res;
+      console.log(res);    
+      // User.userData = res;
+      $cookieStore.put('userData', res.data.email)
       $state.go('items');
     });
   }
   User.signup = function(newUser) {
     $http.post('/api/users', newUser).then(res => {
       console.log(res);
-       User.userData = res;
-       $state.go('items');
+      User.userData = res;
+      $state.go('items');
     });
   }
-  User.logout = function(user) {
-    $http.post('/api/users', user).then(res => {
-      console.log(res);
-       userData = null;
-       $state.go('items');
-    });
+  User.logout = function() {
+     $cookieStore.remove('token');
+     $cookieStore.remove('userData');
+     $cookieStore.remove('myCart');
+     $state.go('items');
   }
   // User.updateUser = function(user)
   //   $http.put('/api/users/'+ user.id, $scope.user).then(res => {

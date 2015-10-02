@@ -25,17 +25,18 @@
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
-          <li><a ng-if="(user)" ng-click="logout(user)" ui-sref="logout">Log-Out</a>
-            <a ng-if="(!user)" ui-sref="login">Log-In</a>
-          </li>
+
+          <li><a ui-sref="login">Log-In</a></li>
+
+          <li><a ui-sref="logout" ng-click="logout()">Log-Out</a></li>
+          
         </ul>
         <ul ng-click="closeSideNav()" class="side-nav" id="mobile-demo">
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
-          <li><a ng-if="(user)" ui-sref="logout">Log-Out</a>
-            <a ng-if="(!user)" ui-sref="login">Log-In</a>
-          </li>
+          <li><a ng-click="logout()" ui-sref="logout">Log-Out</a></li>
+          <li><a ui-sref="login">Log-In</a></li>
         </ul>
       </div>
     </nav>

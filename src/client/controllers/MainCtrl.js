@@ -1,4 +1,4 @@
-module.exports = function($scope, $state, Cart, User) {
+module.exports = function($scope, $state, Cart, User, $cookieStore) {
   
   $scope.closeSideNav = function(){
     $('.side-nav').sideNav('hide');
@@ -21,4 +21,12 @@ module.exports = function($scope, $state, Cart, User) {
   $scope.loginUser = User.login;
   $scope.signUp = User.signup;
   $scope.logout = User.logout;
+
+  // $scope.loggedIn = $cookieStore.get(‘loggedin’);
+  // if ($scope.loggedIn == “true”) {
+  //   $scope.loggedOut = “”;
+  // }
+  // else {
+  //   $scope.loggedOut = “true”;
+  // }
 };

@@ -1,5 +1,6 @@
 var router = module.exports = require('express').Router();
 var Item = require('../models/item');
+// var auth = require('./users.js').auth;
 
 // INDEX ITEMS
 router.get('/', function(req, res) {

@@ -1,6 +1,6 @@
 <div>
   <div class="confirm-header">
-    <h4 style="text-align: center; padding: 2rem;">Items {{Badge}} Total {{Total | currency}} {{user.email}}
+    <h4 style="text-align: center; padding: 2rem;">Items {{Badge}} Total {{Total | currency}} {{user}}
       <!-- <a class="waves-effect waves-light btn brown">Back to Shop</a> -->
       <a ui-sref="items" class="waves-effect waves-light btn">Confirm Order</a>
     </h4>
@@ -27,6 +27,8 @@
       </div>
     </div>
 </div>
+
+{{cookieJar}}
 
 <!-- <div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel">
     <div class="col s4 m4 l3">

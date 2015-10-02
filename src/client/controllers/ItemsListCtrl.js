@@ -1,4 +1,4 @@
-module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $scope, $state, User, Cart) {
+module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', function($http, $scope, $state, User, Cart, $cookieStore) {
   // GET ITEMS
   $http.get('/api/items').then(res => {
     $scope.items = res.data;
@@ -40,5 +40,6 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', function($http, $
     $scope.Badge = Cart.addTotalItems($scope.cart);
     $scope.Total = Cart.addTotalPrice($scope.cart); 
   };
+  $cookieStore.put('myCart',$scope.cart);
   
 }];
