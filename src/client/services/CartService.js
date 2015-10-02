@@ -7,25 +7,12 @@ module.exports = function($cookieStore) {
   }
 
   Cart.itemList = [];
-  // Cart.itemList.push(Cart.getMyCart());
 
-  // Cookies
-
-  // Cart.getItems = function () {
-  //    debugger
-  //   if (Cart.itemList == []){
-  //     Cart.itemList = $cookieStore.get('myCart');
-  //   } else {
-  //     return Cart.itemList;
-  //   }
-  // }
   Cart.updateMyCart = function(){
-    debugger
     $cookieStore.put('myCart', Cart.itemList);
   };
 
   Cart.updateItem = function (index, item) {
-    debugger
     console.log(item);
     var obj = Cart.getMyCart().filter(function(innerItem){
       return innerItem.id == item.id;
@@ -38,7 +25,6 @@ module.exports = function($cookieStore) {
   }
 
   Cart.addItem = function(num, obj){
-    debugger
     var arr = Cart.itemList.filter(function(innerItem){
       return innerItem.id == obj.id;
     });
@@ -71,7 +57,6 @@ module.exports = function($cookieStore) {
   };
 
   Cart.getTotalItemsInCart = function(){
-    debugger
     var arr = Cart.getMyCart();
     var sum = 0;
     for(var i in arr ){
