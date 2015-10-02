@@ -10,7 +10,7 @@ module.exports = function ($http, $state, $cookieStore) {
     $http.post('/api/users/authenticate', user).then(res => {
       console.log(res);    
       // User.userData = res;
-      $cookieStore.put('userData', res.data.email)
+      $cookieStore.put('userData', res.data.email);
       $state.go('items');
     });
   }
