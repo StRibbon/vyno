@@ -24,7 +24,7 @@ module.exports = function ($http, $state, $cookieStore) {
   User.logout = function() {
      $cookieStore.remove('token');
      $cookieStore.remove('userData');
-     $cookieStore.remove('<myCart></myCart>');
+     $cookieStore.remove('myCart');
      $state.go('items');
   }
   // User.updateUser = function(user)
