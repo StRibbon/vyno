@@ -2,7 +2,8 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', '
   // GET DEMO USER
   $scope.user = User.getUser();
   // GET ITEMS IN CART
-  $scope.cart = Cart.getItems();
+  // $scope.cart = Cart.getItems();
+  $scope.cart = Cart.getMyCart();
   // TOTAL ITEMS IN CART
   $scope.Badge = Cart.addTotalItems();
   // TOTAL PRICE OF CART

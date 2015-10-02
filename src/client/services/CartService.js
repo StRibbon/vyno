@@ -5,12 +5,29 @@ module.exports = function($cookieStore) {
 
   // Cookies
 
-  Cart.getItems = function () {
-    return Cart.itemList;
+  // Cart.getItems = function () {
+  //    debugger
+  //   if (Cart.itemList == []){
+  //     Cart.itemList = $cookieStore.get('myCart');
+  //   } else {
+  //     return Cart.itemList;
+  //   }
+  // }
+  Cart.updateMyCart = function(){
+    $cookieStore.put('myCart', Cart.itemList);
+  };
+
+  Cart.getMyCart = function () {
+    debugger
+    if(Cart.itemList.length !== 0){
+      $cookieStore.put('myCart', Cart.itemList);
+    }
+    Cart.myCart = $cookieStore.get('myCart');  
+    console.log(Cart.myCart);
+    return Cart.myCart;
   }
 
   Cart.addItem = function(num, obj){
-
     var arr = Cart.itemList.filter(function(innerItem){
       return innerItem.id == obj.id;
     });
@@ -26,8 +43,9 @@ module.exports = function($cookieStore) {
         obj.subTotal = obj.quantity * obj.price;
     }
     else {
-      console.log('error')
+      console.log('error');
     }
+    Cart.updateMyCart();
   }
 
   Cart.findItem = function(index) {
@@ -37,6 +55,7 @@ module.exports = function($cookieStore) {
   Cart.deleteItem = function(index) {
     Cart.itemList.splice(index,1);
     Cart.addTotalItems();
+    Cart.updateMyCart();
   };
 
   Cart.addTotalItems = function(){

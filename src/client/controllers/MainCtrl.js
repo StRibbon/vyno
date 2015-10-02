@@ -7,16 +7,9 @@ module.exports = function($scope, $state, Cart, User, $cookieStore) {
   $scope.Badge = Cart.addTotalItems();
   
   //USER SERVICES
-  // $scope.getLoggedInUser = function(){
-  //   User.getUser().then(function(data){
-  //     if(data){
-  //       $scope.user = data;
-  //     } else {
-  //       $scope.error = "Not able to Login";
-  //       console.log($scope.error);
-  //     }
-  //   })   
-  // }();
+  $scope.getLoggedInUser = function(){
+    User.getUser();
+  }();
 
   $scope.loginUser = User.login;
   $scope.signUp = User.signup;

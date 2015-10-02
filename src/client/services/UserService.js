@@ -4,12 +4,7 @@ module.exports = function ($http, $state, $cookieStore) {
   User.getUser = function () {
     User.userData.data = $cookieStore.get('userData');
     console.log(User.userData.data);
-    return User.userData.data;
-    // if (User.userData){
-    //   return User.userData.data;
-    // } else {
-    //   return null;
-    // }  
+    return User.userData.data; 
   }
   User.login = function(user) {
     $http.post('/api/users/authenticate', user).then(res => {
@@ -29,7 +24,7 @@ module.exports = function ($http, $state, $cookieStore) {
   User.logout = function() {
      $cookieStore.remove('token');
      $cookieStore.remove('userData');
-     $cookieStore.remove('myCart');
+     $cookieStore.remove('<myCart></myCart>');
      $state.go('items');
   }
   // User.updateUser = function(user)
