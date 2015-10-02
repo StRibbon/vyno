@@ -1,15 +1,16 @@
-<div class="container">
-  <div class="checkout-header">
-    <h4 style="text-align: center, padding: 3rem;">Items {{Badge}} Total {{Total | currency}} {{user.email}}
-      <a class="waves-effect waves-light btn">Confirm Order</a>
+<div>
+  <div class="confirm-header">
+    <h4 style="text-align: center; padding: 2rem;">Items {{Badge}} Total {{Total | currency}} {{user.email}}
+      <!-- <a class="waves-effect waves-light btn brown">Back to Shop</a> -->
+      <a ui-sref="items" class="waves-effect waves-light btn">Confirm Order</a>
     </h4>
   </div>
 
     <div ng-repeat="item in cart track by $index" class="row">
-      <div class="col s2 m3 l4">
+      <div class="col s4 m4 l4">
         <img ng-src="{{ item.img }}" class="responsive-img">
       </div>
-      <div class="col s10 m9 l8">
+      <div class="col s8 m8 l8">
         <h4>
           <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
           {{item.maker}}
@@ -22,7 +23,7 @@
           </h5>
           <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
           <span class="btn btn-success btn-xs" ng-click="updateItem(item)">Ok</span>
-          <span class="btn btn-danger btn-xs" ng-click="removeItem($index)">X</span>
+          <span class="btn btn-danger btn-xs red" ng-click="removeItem($index)">X</span>
       </div>
     </div>
 </div>

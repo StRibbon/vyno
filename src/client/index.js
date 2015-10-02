@@ -1,4 +1,4 @@
-var app = angular.module('Vyno-App', ['ui.router', 'ngAnimate', 'ngMaterial']);
+var app = angular.module('Vyno-App', ['ui.router', 'ngAria', 'ngAnimate', 'ngMaterial', 'ngCookies']);
 
 app.config([
   '$locationProvider',
