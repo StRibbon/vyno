@@ -1,12 +1,33 @@
-<div class="container">
+<div class="checkout-header">
+  <a class="btn btn-large" ui-sref="checkout" ng-show="Badge >= 1" id="checkout-button">
+    <span id="checkout-font">{{user.email}}
+    <i class="large material-icons">shopping_cart</i>
+    {{Badge}}</span>
+  </a>
+</div>
 
-{{user.email}}
-
-<a class="btn" ui-sref="checkout" ng-show="Badge >= 1">
-<i class="medium material-icons">shopping_cart</i>
-<span>{{Badge}}</span>
-</a>
-
+<div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel" layout-sm="column">
+    <div class="col s12 m4 l4">
+      <img ng-src="{{ item.img }}" style="max-height: 400px;" class="responsive-img">
+    </div>
+    
+    <div class="col s12 m8 l8" flow-text>
+      <h4>
+        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+        {{ item.maker }}
+        {{ item.year }}
+        {{ item.location }}
+      </h4>
+      <div class="item-description">
+        {{ item.description }}
+      </div>    
+        <div class="price-add">
+          <a class="btn-floating btn-large waves-effect waves-light brown" ng-click="addItem(1, item)">
+          <i class="mdi-content-add"></i></a>
+          <span class="item-price">{{ item.price | currency }}</span>
+        </div>
+    </div>
+</div>
 
 <!-- <ul>
   <li ng-repeat="item in cart track by $index">{{item.quantity}} {{item.name}}</li>
@@ -38,29 +59,6 @@
 </div> --> 
 
 
-<div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel" layout-sm="column">
-    <div class="col s4 m4 l5">
-      <img ng-src="{{ item.img }}" class="responsive-img">
-    </div>
-    
-    <div class="col s8 m8 l7" flow-text>
-      <h4>
-        <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-        {{ item.maker }}
-        {{ item.year }}
-        {{ item.location }}
-      </h4>
-      <div class="item-description">
-        {{ item.description }}
-      </div>    
-      <div class="price-add">
-        <a class="btn-floating btn-large waves-effect waves-light brown" ng-click="addItem(1, item)">
-        <i class="mdi-content-add"></i></a>
-        <span class="item-price">{{ item.price | currency }}</span>
-      </div>
-    </div>
-</div> 
-</div>
 <!-- END REPEAT <!--
 
 
