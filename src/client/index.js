@@ -58,4 +58,5 @@ app.factory('User', require('./services/UserService'));
 app.factory('Cart', require('./services/CartService'));
 app.factory('Map', require('./services/MapService'));
 // DIRECTIVES
-app.directive('itemsDirective', require('./directives/ItemsDirective'));
+// app.directive('ngItems', require('./directives/ItemsDirective'));
+// app.directive('ngConfirm', require('./directives/confirmDirective'));

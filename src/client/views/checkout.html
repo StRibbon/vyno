@@ -1,50 +1,76 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-      
-  <form ng-submit="submit($event)" class="form-group">
-    <div>
-      <label for="">{{user}}</label>
-      <!-- <input type="text" ng-model="user" class="form-control" /> -->
-    </div>
-    <div>
-      <label for="">{{address}}</label>
-     <!--  <input type="text" ng-model="item.description" class="form-control" /> -->
-    </div>
-    <div>
-      <label for="">{{phone}}</label>
-     <!--  <input type="text" ng-model="item.price" class="form-control" /> -->
-    </div>
-    <div>
-      <ul ng-repeat="item in cart track by $index">
-        <li>{{item.quantity}}{{item.name}}{{item.subTotal}}</li>
-      </ul>
-    </div>
-    {{Badge}} {{Total}}
-    <div>
-      <br>
-      <button type="submit" class="btn btn-success">Save</button>
-  </form>
-      <button ng-click="delete(item)" class="btn btn-danger">Delete</button>
-      <button ui-sref="items" class="btn btn-warning">Back</button>
-    </div>
-</div>
 
-    <div class="modal-footer">
-      <a ui-sref="confirmation" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-    </div>
+      <h3>Customer info:</h3>
+
+      <form ng-submit="submit($event)" class="form-group">
+        <div>
+          <label for="">Name</label>
+          <!-- <input type="text" ng-model="user" class="form-control" /> -->
+        </div>
+        <div>
+          <label for="">Address</label>
+         <!--  <input type="text" ng-model="item.description" class="form-control" /> -->
+        </div>
+        <div>
+          <label for="">Phone</label>
+          <!-- <input type="text" ng-model="user.phone" class="form-control" /> -->
+        </div>
+        <div>
+          <h3>Order info: </h3>
+          <ul ng-repeat="item in cart track by $index">
+            <li>
+              {{item.quantity}}
+              {{item.name}}
+              (${{item.price}})
+              {{item.subTotal | currency}}          
+            </li>
+          </ul>
+        </div>
+        Total items: {{Badge}} 
+        Total: {{Total | currency}}
+        <div>
+      </form>
+    </div> <!-- END MODAL CONTENT -->
+</div>
+<!-- MODAL FOOTER BUTTTONS -->
+<div class="modal-footer row">
+    <a ui-sref="items" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Shop+</a>
+    <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
+    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Confirm Order</a>
   </div>
-<!-- Checkout View -->
+</div>
+<!-- CHECKOUT BUTTON -->
+<div class="checkout-header">
+  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
+    <span id="checkout-font">
+    Total ${{Total}}
+    <i class="material-icons">check_circle</i>
+    </span>
+  </a>
+</div>
+<!-- BEGIN CHECKOUT VIEW -->
 <div>
-  <div class="confirm-header">
+
+  <!-- <div class="confirm-header">
     <h4 style="text-align: center; padding: 2rem;">
     Welcome back {{user}}!
-    <br><br>Items {{Badge}} Total {{Total | currency}}
+    <br><br>Items {{Badge}} Total {{Total | currency}} -->
       <!-- <a class="waves-effect waves-light btn brown">Back to Shop</a> -->
-      <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Confirm Order</a>
+      <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Confirm Order</a>
     </h4>
-  </div>
+  </div> -->
 
+<!-- <div class="checkout-header">
+  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
+    <span id="checkout-font">
+    Total ${{Total}}
+    <i class="material-icons">check_circle</i>
+    </span>
+  </a>
+</div> -->
+<!-- Items-List -->
     <div ng-repeat="item in cart track by $index" class="row card-panel hoverable">
       <div class="col s4 m4 l4">
         <img ng-src="{{ item.img }}" class="responsive-img">
