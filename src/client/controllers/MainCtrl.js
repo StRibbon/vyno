@@ -1,5 +1,7 @@
-module.exports = function($scope, $state, Cart, User, $cookieStore) {
+module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) {
   
+  $rootScope.isLoggedIn = false;
+
   $scope.closeSideNav = function(){
     $('.side-nav').sideNav('hide');
   }

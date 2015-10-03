@@ -1,0 +1,26 @@
+<div class="container">
+  <form ng-submit="submit($event)" class="form-group">
+    <div>
+      <label for="">Name</label>
+      <input type="text" ng-model="item.name" class="form-control" />
+    </div>
+    <div>
+      <label for="">Description</label>
+      <input type="text" ng-model="item.description" class="form-control" />
+    </div>
+    <div>
+      <label for="">Price</label>
+      <input type="text" ng-model="item.price" class="form-control" />
+    </div>
+    <div>
+      <label for="">Image URL</label>
+      <input type="text" ng-model="item.img" class="form-control" />
+    </div>
+    <div>
+      <br>
+      <button type="submit" class="btn btn-success">Save</button>
+  </form>
+      <button ng-click="delete(item)" class="btn btn-danger">Delete</button>
+      <button ui-sref="items" class="btn btn-warning">Back</button>
+    </div>
+</div>

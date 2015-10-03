@@ -1,4 +1,4 @@
-module.exports = function ($http, $state, $cookieStore) {
+module.exports = function ($http, $state, $cookieStore, $rootScope) {
   var User = {};
   User.userData = {};
   User.getUser = function () {
@@ -11,13 +11,29 @@ module.exports = function ($http, $state, $cookieStore) {
       console.log(res);    
       // User.userData = res;
       $cookieStore.put('userData', res.data.email);
+      $rootScope.isLoggedIn = true;
       $state.go('items');
     });
   }
+  // User.login = function(user){
+  //   debugger
+  //   $http({
+  //     method: 'POST',
+  //     url: '/api/users/authenticate', user   
+  //   }).then(function success(res){
+  //       console.log(res);
+  //       $cookieStore.put('userData', res.data.email);
+  //       $rootScope.isLoggedIn = true;
+  //       $state.go('items');
+  //   }, function err(res){
+  //       console.log(res);
+  //   });
+  // }
   User.signup = function(newUser) {
     $http.post('/api/users', newUser).then(res => {
       console.log(res);
       User.userData = res;
+      $rootScope.isLoggedIn = true;
       $state.go('items');
     });
   }

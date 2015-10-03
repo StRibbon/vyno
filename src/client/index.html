@@ -26,16 +26,16 @@
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
           <li><a href="collapsible.html">{{user}}</a></li>
-          <li><a ng-if="user" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
-          <li><a ng-if="!user" ui-sref="login">Log-In</a></li>
+          <li><a ng-if="$rootScope.isLoggedIn" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
+          <li><a ng-if="!$rootScope.isLoggedIn" ui-sref="login">Log-In</a></li>
           
         </ul>
         <ul ng-click="closeSideNav()" class="side-nav" id="mobile-demo">
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
-          <li><a ng-if="user" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
-          <li><a ng-if="!user" ui-sref="login">Log-In</a></li>
+          <li><a ng-if="$root.isLoggedIn" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
+          <li><a ng-if="!$root.isLoggedIn" ui-sref="login">Log-In</a></li>
         </ul>
       </div>
     </nav>
