@@ -18,10 +18,13 @@ module.exports = function($cookieStore) {
       return innerItem.id == item.id;
     });
     obj[0].quantity = item.quantity;
+    obj[0].subTotal = item.quantity * item.price;
     console.log(obj);
     Cart.itemList = Cart.getMyCart();
     Cart.itemList[index].quantity = obj[0].quantity;
+    Cart.itemList[index].subTotal = obj[0].subTotal;
     Cart.updateMyCart();
+    Cart.addTotalPrice(Cart.getMyCart());
   }
 
   Cart.addItem = function(num, obj){
@@ -65,13 +68,19 @@ module.exports = function($cookieStore) {
     return sum;
   }
 
-  Cart.addTotalPrice = function(items){
-    var arr = items;
+  Cart.addTotalPrice = function(){
+    debugger
+
+    var arr = Cart.getMyCart();
     var sum = 0;
     for(var i in arr ){
       sum += arr[i].subTotal; 
     }
+    $cookieStore.put('totalPrice', sum);
     return sum;
-  } 
+  }
+  // Cart.getTotalPrice = function(){
+  //   $cookieStore.get('totalPrice');
+  // }
   return Cart;
 };

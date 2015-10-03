@@ -6,17 +6,17 @@
 
       <form ng-submit="submit($event)" class="form-group">
         <div>
-          <label for="">Name</label>
+          <label for="">{{user.first_name}}</label>
           <!-- <input type="text" ng-model="user" class="form-control" /> -->
         </div>
         <div>
-          <label for="">Address</label>
-         <!--  <input type="text" ng-model="item.description" class="form-control" /> -->
+          <label for="">{{user.phone}}</label>
+         <!--  <input type="text" ng-model="user.phone" class="form-control" /> -->
         </div>
         <div>
-          <label for="">Phone</label>
-          <!-- <input type="text" ng-model="user.phone" class="form-control" /> -->
-        </div>
+          <label for="">{{user.address}}</label>
+          <!-- <input type="text" ng-model="user.address" class="form-control" /> -->
+        </div>    
         <div>
           <h3>Order info: </h3>
           <ul ng-repeat="item in cart track by $index">
@@ -40,6 +40,12 @@
     <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
     <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Confirm Order</a>
   </div>
+</div>
+<!-- SHOP RETURN BUTTON -->
+<div class="shop-return">
+  <a class="modal-trigger btn btn-large brown" ui-sref="items" id="checkout-button">
+    <i class="material-icons">keyboard_return</i>
+  </a>
 </div>
 <!-- CHECKOUT BUTTON -->
 <div class="checkout-header">

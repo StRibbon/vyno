@@ -1,19 +1,19 @@
 module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', '$cookies', function($http, $scope, $state, User, Cart, $cookieStore, $cookies) {
   // GET DEMO USER
-  $scope.user = User.getUser();
+  $scope.user = User.getUser().data;
   // GET ITEMS IN CART
   // $scope.cart = Cart.getItems();
   $scope.cart = Cart.getMyCart();
   // TOTAL ITEMS IN CART
   $scope.Badge = Cart.getTotalItemsInCart();
   // TOTAL PRICE OF CART
-  $scope.Total = Cart.addTotalPrice($scope.cart);
+  $scope.Total = Cart.addTotalPrice();
   // REMOVE ITEM FROM CART
   $scope.removeItem = function(index){
     Cart.deleteItem(index);
     $scope.cart = Cart.getMyCart();
     $scope.Badge = Cart.getTotalItemsInCart($scope.cart);
-    $scope.Total = Cart.addTotalPrice($scope.cart);
+    $scope.Total = Cart.addTotalPrice();
     
   };
   // UPDATE ITEM QUANTITY
@@ -21,7 +21,13 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', '$cookieStore', '
     item.subTotal = item.quantity * item.price;
     Cart.updateItem(index, item);
     $scope.Badge = Cart.getTotalItemsInCart();
-    $scope.Total = Cart.addTotalPrice($scope.cart); 
+    $scope.Total = Cart.addTotalPrice();
+  };
+
+  //CONFIRM CONTROLS
+
+  $scope.createOrder = function(){
+     Order.create();
   };
 
   $(document).ready(function(){

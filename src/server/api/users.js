@@ -94,7 +94,10 @@ router.post('/authenticate', function(req, res) {
               success: true,
               message: 'Enjoy your token!',
               token: token,
-              email: user.email
+              id: user.id,
+              first_name: user.first_name,
+              email: user.email,
+              phone: user.phone
             });
           } else {
             res.status(401).end();

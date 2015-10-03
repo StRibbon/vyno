@@ -25,7 +25,6 @@
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
-          <li><a href="collapsible.html">{{user}}</a></li>
           <li><a ng-if="$rootScope.isLoggedIn" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
           <li><a ng-if="!$rootScope.isLoggedIn" ui-sref="login">Log-In</a></li>
           
@@ -45,11 +44,16 @@
     <footer class="page-footer">
           <div class="container">
             <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <div class="col m4 l6 s6">
+                <h5 class="white-text">User info</h5>
+                <ul>
+                <li class="grey-text text-lighten-4" ng-repeat="user in user">
+                  <p>Name: {{user.first_name}}</p>
+                  <p>Phone: {{user.phone}}</p>
+                  <p>Email: {{user.email}}</p>
+                </li>
               </div>
-              <div class="col l4 offset-l2 s12">
+              <div class="col m4 l4 offset-l2 s6">
                 <h5 class="white-text">Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
