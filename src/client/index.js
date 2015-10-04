@@ -1,4 +1,4 @@
-var app = angular.module('Vyno-App', ['ui.router', 'ngAria', 'ngAnimate', 'ngMaterial', 'ngCookies']);
+var app = angular.module('Vyno-App', ['GoogleMapsNative', 'ui.router', 'ngAria', 'ngAnimate', 'ngMaterial', 'ngCookies']);
 
 app.config([
   '$locationProvider',
@@ -8,6 +8,11 @@ app.config([
     $urlRouterProvider.otherwise('/');
     // routes
     $stateProvider
+      .state('map', {
+        url: '/map',
+        templateUrl: 'views/map-practice.html',
+        controller: 'MapCtrl'
+      })
       .state('main', {
         url: '/',
         templateUrl: 'views/main.html',
@@ -52,6 +57,7 @@ app.controller('ItemsListCtrl', require('./controllers/ItemsListCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
 app.controller('CheckoutCtrl', require('./controllers/CheckoutCtrl'));
 app.controller('ConfirmCtrl', require('./controllers/ConfirmCtrl'));
+app.controller('MapCtrl', require('./controllers/MapCtrl'));
 // SERVICES
 app.factory('UI', require('./services/UiService'));
 app.factory('User', require('./services/UserService'));

@@ -1,0 +1,23 @@
+<h1>Map testing</h1>
+
+<div id="map-canvas"></div>
+
+<style>
+ #map-canvas {
+  height: 400px;
+ }
+</style>
+
+<script>
+  var map;
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            center: {
+                lat: 37.7833,
+                lng: -122.4157
+            },
+            zoom: 13
+        });
+    }
+</script>
