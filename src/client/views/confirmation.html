@@ -1,1 +1,19 @@
-<h3>YOUR ORDER HAS BEEN CONFIRMED</h3>
+<div class="container">
+
+<h4>YOUR ORDER HAS BEEN CONFIRMED</h4>
+
+<p>Order ID: {{order.order_id}}</p>
+<p>Order Date: {{order.date | date}}</p>
+<p>Delivered: {{order.delivered}}</p>
+
+<ul ng-repeat="item in cart track by $index">
+  Items:
+  <li>
+    {{item.quantity}}
+    {{item.name}}
+    (${{item.price}})
+    {{item.subTotal | currency}}          
+  </li>
+</ul>
+
+</div>

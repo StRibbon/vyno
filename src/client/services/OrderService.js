@@ -1,20 +1,25 @@
-module.exports = function(User, Cart, Map) {
+module.exports = function(User, Cart, $http, $state, $cookieStore) {
   
   var Order = {};
 
-  Order.obj = {
-    user_id: '',
-    delivered: false
-  }
-
-  Order.getOrder = function(){
-     
-  }
-  Order.create = function(order){
-    $http.post('/api/orders', order).then(res => {
-      console.log('**COMPLETED**' + order);
+  Order.create = function(newOrder){
+    newOrder.delivered = false;
+    newOrder.date = new Date();
+    console.log(newOrder);
+    $http.post('/api/orders', newOrder).then(res => {
+      console.log('**COMPLETED**' + res);
+      Order.item = res.data;
+      $cookieStore.put('orderInfo', res.data)
+      return Order.item;
     });
   };
+
+  // Order.find = function(){
+  //   $http.get('/api/orders/' + orderId ).then(res => {
+  //     Order.item = res.data;
+  //     return Order.item;
+  //   })
+  // };
 
   return Order;
 };

@@ -4,7 +4,7 @@
 
       <h3>Customer info:</h3>
 
-      <form ng-submit="submit($event)" class="form-group">
+      <form name="order_form" class="form-group">
         <div>
           <label for="">{{user.first_name}}</label>
           <!-- <input type="text" ng-model="user" class="form-control" /> -->
@@ -31,14 +31,15 @@
         Total items: {{Badge}} 
         Total: {{Total | currency}}
         <div>
+        <!-- HIDDEN INPUTS -->
       </form>
     </div> <!-- END MODAL CONTENT -->
-</div>
+  </div>
 <!-- MODAL FOOTER BUTTTONS -->
-<div class="modal-footer row">
+  <div class="modal-footer row">
     <a ui-sref="items" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Shop+</a>
     <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
-    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Confirm Order</a>
+    <a ng-click="createOrder()" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Confirm Order</a>
   </div>
 </div>
 <!-- SHOP RETURN BUTTON -->

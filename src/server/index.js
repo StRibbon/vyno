@@ -16,8 +16,9 @@ app.use(cookieParser());
 app.use(require('body-parser').json());
 app.use(require('morgan')('combined'));
 // app.use(require('flash')());
-app.use('/api/items', require('./api/items'));
 app.use('/api/users', require('./api/users'));
+app.use('/api/items', require('./api/items'));
+app.use('/api/orders', require('./api/orders'));
 app.use(express.static('public'));
 app.set('superSecret', process.env.SECRET);
 

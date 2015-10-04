@@ -56,6 +56,7 @@ app.controller('ConfirmCtrl', require('./controllers/ConfirmCtrl'));
 app.factory('UI', require('./services/UiService'));
 app.factory('User', require('./services/UserService'));
 app.factory('Cart', require('./services/CartService'));
+app.factory('Order', require('./services/OrderService'));
 app.factory('Map', require('./services/MapService'));
 // DIRECTIVES
 // app.directive('ngItems', require('./directives/ItemsDirective'));

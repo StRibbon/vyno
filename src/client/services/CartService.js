@@ -69,8 +69,6 @@ module.exports = function($cookieStore) {
   }
 
   Cart.addTotalPrice = function(){
-    debugger
-
     var arr = Cart.getMyCart();
     var sum = 0;
     for(var i in arr ){
