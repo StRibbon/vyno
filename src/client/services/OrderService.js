@@ -4,12 +4,13 @@ module.exports = function(User, Cart, $http, $state, $cookieStore) {
 
   Order.create = function(newOrder){
     newOrder.delivered = false;
-    newOrder.date = new Date();
+    newOrder.date = new Date().toLocaleString().toString();
     console.log(newOrder);
     $http.post('/api/orders', newOrder).then(res => {
-      console.log('**COMPLETED**' + res);
+      console.log(res);
       Order.item = res.data;
-      $cookieStore.put('orderInfo', res.data)
+      $cookieStore.remove('orderInfo');
+      $cookieStore.put('orderInfo', Order.item);
       return Order.item;
     });
   };

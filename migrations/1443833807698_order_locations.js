@@ -1,7 +1,7 @@
 exports.up = function(pgm) {
   pgm.createTable('order_locations', {
     order_id: 'integer',
-    time: 'date',
+    time: 'text',
     lat: 'numeric',
     long: 'numeric',  
     eta: 'integer' 

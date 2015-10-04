@@ -2,7 +2,7 @@ exports.up = function(pgm) {
   pgm.createTable('orders', {
     order_id: 'id',
     user_id: 'integer',
-    date: 'date',
+    date: 'text',
     delivered: 'boolean' 
   });
 };

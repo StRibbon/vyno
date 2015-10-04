@@ -30,7 +30,7 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
      var newOrder = {};
      newOrder.user_id = $scope.user.id;
      Order.create(newOrder);
-     $state.go('confirmation');
+     // $state.go('confirmation');
   };
   // UI Service
   $(document).ready(function(){
