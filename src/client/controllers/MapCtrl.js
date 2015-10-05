@@ -14,7 +14,7 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
     $scope.address = $scope.user.address_street;
     $cookieStore.put('userAddress', $scope.address);
     geocodeAddress(geocoder, map);
-    $scope.geocode_form.$setPristine(true);
+    $scope.geocode_form.$setPristine();
   }
 
   // document.getElementById('submit').addEventListener('click', function() {
@@ -44,5 +44,21 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
       }
     });
   }
+
+  var service = new google.maps.DistanceMatrixService;
+  service.getDistanceMatrix({
+    origins: ['san francisco, california'],
+    destinations: ['oakland, california'],
+    travelMode: google.maps.TravelMode.DRIVING
+    }, function(response, status){
+      if(status !== google.maps.DistanceMatrixStatus.OK){
+        alert('Error: ' + status);            
+      } else {
+        // console.log(response.rows[0].elements[0].duration.text);
+        $scope.duration = response.rows[0].elements[0].duration.text;
+        alert($scope.duration);
+      }
+  });
+
 };
 

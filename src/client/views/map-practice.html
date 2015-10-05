@@ -1,46 +1,8 @@
 <h1>Map testing</h1>
 
-<div id="map-canvas"></div>
-
 Input:<input type="text" ng-model="newRoute.origin">
 Destination:<input type="text" ng-model="newRoute.destination">
 
 {{newRoute}}
-
+<button ng-click="calculate(newRoute)">Calculate</button>
 <button ng-click="calculateNew()">Calculate</button>
-
-<style>
- #map-canvas {
-  height: 400px;
- }
-</style>
-
-<script>
-  var map;
-
-  
-        map = new google.maps.Map(document.getElementById('map-canvas'), {
-            center: {
-                lat: 37.7833,
-                lng: -122.4157
-            },
-            zoom: 13
-        });
-
-        var geocorder = new google.maps.Geocoder;
-        var service = new google.maps.DistanceMatrixService;
-        service.getDistanceMatrix({
-          origins: [{lat: 55.93, lng: -3.118}],
-          destinations: [{lat: 50.087, lng: 14.421}],
-          travelMode: google.maps.TravelMode.DRIVING
-
-        }, function(response, status){
-          if(status !== google.maps.DistanceMatrixStatus.OK){
-            alert('Error: ' + status);            
-          } else {
-            console.log(response);
-          }
-        });
-        
-    
-</script>

@@ -24,3 +24,9 @@
       <input ng-model="user.address_street" type="textbox"/>
       <input class="btn btn-medium" type="submit" value="Geocode">
     </form>
+
+    Input:<input type="text" ng-model="newRoute.origin">
+Destination:<input type="text" ng-model="newRoute.destination">
+
+{{newRoute}}
+<button ng-click="calculate(newRoute)">Calculate</button>
