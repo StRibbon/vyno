@@ -1,11 +1,13 @@
 module.exports = function ($http, $state, $cookieStore, $rootScope) {
   var User = {};
   User.userData = {};
+  // GET USER DATA FROM COOKIE
   User.getUser = function () {
     User.userData.data = $cookieStore.get('userData');
     console.log(User.userData);
     return User.userData; 
   }
+  // BASIC LOGIN
   User.login = function(user) {
     $http.post('/api/users/authenticate', user).then(res => {
       console.log(res);    
@@ -15,6 +17,7 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
       $state.go('items');
     });
   }
+  // LOGIN WITH CALLBACK
   // User.login = function(user){
   //   debugger
   //   $http({
@@ -38,10 +41,12 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
       $state.go('items');
     });
   }
+  // USER LOGOUT
   User.logout = function() {
      $cookieStore.remove('token');
      $cookieStore.remove('userData');
      $cookieStore.remove('myCart');
+     $rootScope.isLoggedIn = false;
      $state.go('items');
   }
   // User.updateUser = function(user)

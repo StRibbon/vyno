@@ -3,7 +3,7 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
   $scope.user = User.getUser();
 
   $scope.cart = Cart.getMyCart();
-
+  $scope.Total = Cart.addTotalPrice();
   $scope.order = $cookieStore.get('orderInfo');
   // $http.get('/api/orders/' + orderId ).then(res => {
   //   $scope.order = res.data;

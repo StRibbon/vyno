@@ -13,6 +13,11 @@ app.config([
         templateUrl: 'views/map-practice.html',
         controller: 'MapCtrl'
       })
+      .state('geocode', {
+        url: '/geocode',
+        templateUrl: 'views/geocode.html',
+        controller: 'MapCtrl'
+      })
       .state('main', {
         url: '/',
         templateUrl: 'views/main.html',
