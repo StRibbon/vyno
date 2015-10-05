@@ -5,13 +5,14 @@
       <div class="row">
           <form ng-submit="submit($event)" name="geocode_form">
             <div class="row">
-              <div class="input-field col s12">
+              <div class="input-field col s12 m6">
                 <i class="material-icons prefix">account_circle</i>
                 <input id="icon_prefix" type="text" class="validate" ng-model="user.address_street">
                 <label for="icon_prefix">street address</label>
               </div>
-              <div class="col s12">
+              <div class="col s12 m6" id="geocode-button">
                 <button class="btn btn-medium" type="submit">Geocode</button>
+                <!-- <p>ETA: {{duration}}</p> -->
               </div>
             </div>
           </form>
@@ -31,9 +32,9 @@
   </div>
 <!-- MODAL FOOTER BUTTTONS -->
   <div class="modal-footer row">
+    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat" ng-click="createOrder()">Confirm Address</a>
     <a ui-sref="items" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Shop+</a>
     <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
-    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat" ng-click="createOrder()">Confirm Order</a>
   </div>
 </div>
 <!-- SHOP RETURN BUTTON -->
@@ -46,7 +47,7 @@
 <div class="checkout-header">
   <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
     <span id="checkout-font">
-    Total ${{Total}}
+    Checkout ${{Total}}
     <i class="material-icons">check_circle</i>
     </span>
   </a>

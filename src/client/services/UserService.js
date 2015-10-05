@@ -8,30 +8,32 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
     return User.userData; 
   }
   // BASIC LOGIN
+  // User.login = function(user) {
+  //   $http.post('/api/users/authenticate', user).then(res => {
+  //     console.log(res);    
+  //     // User.userData = res;
+  //     $cookieStore.put('userData', res.data);
+  //     $rootScope.isLoggedIn = true;
+  //     $state.go('items');
+  //   });
+  // }
+  // LOGIN WITH CALLBACK
   User.login = function(user) {
-    $http.post('/api/users/authenticate', user).then(res => {
+    return $http.post('/api/users/authenticate', user).then(res => {
+      debugger
+      if(res.data.success == false){
+        alert("Wrong password");
+        return "Wrong password";
+      }
       console.log(res);    
       // User.userData = res;
       $cookieStore.put('userData', res.data);
       $rootScope.isLoggedIn = true;
       $state.go('items');
+      return "";
     });
   }
-  // LOGIN WITH CALLBACK
-  // User.login = function(user){
-  //   debugger
-  //   $http({
-  //     method: 'POST',
-  //     url: '/api/users/authenticate', user   
-  //   }).then(function success(res){
-  //       console.log(res);
-  //       $cookieStore.put('userData', res.data.email);
-  //       $rootScope.isLoggedIn = true;
-  //       $state.go('items');
-  //   }, function err(res){
-  //       console.log(res);
-  //   });
-  // }
+
   User.signup = function(newUser) {
     $http.post('/api/users', newUser).then(res => {
       console.log(res);

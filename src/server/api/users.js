@@ -83,7 +83,7 @@ router.post('/authenticate', function(req, res) {
     .from(User)
     .where(User.email.equals(req.body.email))
     .exec(function(err, rows) {
-      console.log('FOUND EMAIL');
+      console.log('WTF WTF WTF');
       var user = rows[0];
       var password = rows[0].password;
       bcrypt.compare(req.body.password, password, function (err, isMatch) {
@@ -101,7 +101,7 @@ router.post('/authenticate', function(req, res) {
               address_street: user.address_street
             });
           } else {
-            res.status(401).end();
+            res.json({success: false});
           }
         });
       console.log(err);

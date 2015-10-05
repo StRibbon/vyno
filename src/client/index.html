@@ -42,7 +42,7 @@
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
-          <li><a ng-if="$root.isLoggedIn" ng-click="logout()" ui-sref="logout">Log-Out</a></li>
+          <li><a ng-if="$root.isLoggedIn" ng-click="logout()">Log-Out</a></li>
           <li><a ng-if="!$root.isLoggedIn" ui-sref="login">Log-In</a></li>
         </ul>
       </div>
@@ -64,7 +64,7 @@
 
                 </li> -->
               </div>
-              <div class="col m4 l4 offset-l2 s6">
+              <div class="col m4 l4 offset-l2 s6" style="text-align:right;">
                 <h5 class="white-text">Links</h5>
                 <ul>
                   <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>

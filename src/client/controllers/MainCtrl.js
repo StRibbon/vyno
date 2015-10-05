@@ -20,7 +20,15 @@ module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) 
   //   User.getUser();
   // }();
 
-  $scope.loginUser = User.login;
+  $scope.loginUser = function(user){
+    debugger
+    $scope.userMessage = User.login(user);
+    $scope.userMessage.then(function(textMessage)
+    {
+      $scope.userMessage = textMessage;
+    });
+    console.log($scope.userMessage);
+  };
   $scope.signUp = User.signup;
   $scope.logout = function(){
     User.logout();
