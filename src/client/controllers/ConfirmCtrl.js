@@ -5,6 +5,7 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
   $scope.cart = Cart.getMyCart();
   $scope.Total = Cart.addTotalPrice();
   $scope.order = $cookieStore.get('orderInfo');
+  $scope.ETA = $cookieStore.get('ETA');
   // $http.get('/api/orders/' + orderId ).then(res => {
   //   $scope.order = res.data;
   // });

@@ -1,35 +1,33 @@
 <!-- Modal Structure -->
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal modal-fixed-footer" ng-controller="MapCtrl">
     <div class="modal-content">
+      <!-- ADDRESS INPUT -->
+      <div class="row">
+          <form ng-submit="submit($event)" class="col s12" name="geocode_form">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate" ng-model="user.address_street">
+                <label for="icon_prefix">Enter your street address</label>
+              </div>
+              <div class="col s6">
+                <button class="btn btn-medium" type="submit">Geocode</button>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div id="map"></div>
+      <button ng-click="loadMap()">Reload</button>
+      <md-button ng-click="showSimpleToast()">
+        Show Simple
+      </md-button>
 
-      <h3>Customer info:</h3>
 
-      <form name="order_form" class="form-group">
-        <div>
-          <label for="">{{user.first_name}}</label>
-          <!-- <input type="text" ng-model="user" class="form-control" /> -->
-        </div>
-        <div>
-          <label for="">{{user.phone}}</label>
-         <!--  <input type="text" ng-model="user.phone" class="form-control" /> -->
-        </div>
-        <div>
-          <label for="">{{user.address}}</label>
-          <!-- <input type="text" ng-model="user.address" class="form-control" /> -->
-        </div>    
-        <div>
-          <h3>Order info: </h3>
-          <ul ng-repeat="item in cart track by $index">
-            <li>
-              {{item.quantity}}
-              {{item.name}}
-              (${{item.price}})
-              {{item.subTotal | currency}}          
-            </li>
-          </ul>
-        </div>
-        Total items: {{Badge}} 
-        Total: {{Total | currency}}
+      <!-- <form ng-submit="submit($event)" class="form-group" name="geocode_form">
+      <input ng-model="user.address_street" type="textbox"/>
+      <input class="btn btn-medium" type="submit" value="Geocode">
+    </form> -->
+
         <div>
         <!-- HIDDEN INPUTS -->
       </form>
