@@ -3,9 +3,9 @@
         height: 400px;
       }
   #floating-panel {
-    position: absolute;
-    top: 10px;
-    left: 25%;
+    position: relative;
+    /*top: 10px;
+    left: 25%;*/
     z-index: 5;
     background-color: #fff;
     padding: 5px;
@@ -18,47 +18,9 @@
 
 </style>
 
-    <div id="floating-panel">
-      <input id="address" type="textbox">
-      <input id="submit" type="button" value="Geocode">
-    </div>
-    <div id="map"></div>
-
-    <script>
     
- 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 37.7833, lng: -122.4157}
-        });
-        var geocoder = new google.maps.Geocoder();
-
-        document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(geocoder, map);
-        });
-      
-
-      function geocodeAddress(geocoder, resultsMap) {
-        var address = document.getElementById('address').value;
-        geocoder.geocode({
-          'address': address,
-          componentRestrictions: {
-            country: 'USA',
-            locality: 'San Francisco'
-          } 
-        },function(results, status) {
-          if (status === google.maps.GeocoderStatus.OK){
-            resultsMap.setCenter(results[0].geometry.location);
-            resultsMap.setZoom(16);
-            console.log(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-              map: resultsMap,
-              position: results[0].geometry.location
-            });
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-
-    </script>
+    <div id="map"></div>
+    <form ng-submit="submit($event)" class="form-group"name="geocode_form">
+      <input ng-model="user.address_street" type="textbox"/>
+      <input class="btn btn-medium" type="submit" value="Geocode">
+    </form>

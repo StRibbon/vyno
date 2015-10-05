@@ -5,7 +5,7 @@
 <p>Date: {{order.date | date:'medium'}}</p>
 <p>Delivered: {{order.delivered}}</p>
 </div>
- <h3>Items:</h3>
+<h3>Items:</h3>
 <ul ng-repeat="item in cart track by $index">
   <li class="order-info">
     {{item.quantity}}
@@ -14,5 +14,11 @@
     Sub: {{item.subTotal | currency}}          
   </li>
 </ul>
-<h3>Total: {{Total | currency}}</h3>
+<p class="order-info">Total: {{Total | currency}}</p>
+<h3>Delivery info:</h3>
+  <div class="order-info">
+
+    <p>ETA:</p>
+    <p>Driver name/phone:</p>
+  </div>
 </div>

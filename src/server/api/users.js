@@ -97,7 +97,8 @@ router.post('/authenticate', function(req, res) {
               id: user.id,
               first_name: user.first_name,
               email: user.email,
-              phone: user.phone
+              phone: user.phone,
+              address_street: user.address_street
             });
           } else {
             res.status(401).end();
