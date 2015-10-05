@@ -17,11 +17,6 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
     $scope.geocode_form.$setPristine();
   }
 
-  // document.getElementById('submit').addEventListener('click', function() {
-  //   geocodeAddress(geocoder, map);
-  // });
-      
-
   function geocodeAddress(geocoder, resultsMap) {
     var address = $cookieStore.get('userAddress');
     geocoder.geocode({
@@ -45,10 +40,13 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
     });
   }
 
+  var userAddy = '448 page st.';
+  var driverAddy = '45 lucerne st.';
+
   var service = new google.maps.DistanceMatrixService;
   service.getDistanceMatrix({
-    origins: ['san francisco, california'],
-    destinations: ['oakland, california'],
+    origins: [userAddy+', san francisco'],
+    destinations: [driverAddy+', san francisco'],
     travelMode: google.maps.TravelMode.DRIVING
     }, function(response, status){
       if(status !== google.maps.DistanceMatrixStatus.OK){

@@ -21,6 +21,16 @@
         <a href="#!" class="brand-logo">Vyno</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
+          <li>
+            <div class="switch" ng-if="$root.isLoggedIn">
+               <label>
+                 Admin Off
+                 <input type="checkbox">
+                 <span class="lever"></span>
+                 On
+               </label>
+             </div>
+          </li>
           <li><a ui-sref="items">Shop</a></li>
           <li><a href="collapsible.html">About</a></li>
           <li><a href="collapsible.html">Contact</a></li>
@@ -44,15 +54,15 @@
           <div class="container">
             <div class="row">
               <div class="col m4 l6 s6">
-                <h5 class="white-text">User info</h5>
+                <h5 class="white-text">Vyno</h5>
                 <ul>
-                <li class="grey-text text-lighten-4" ng-repeat="user in user">
+                <!-- <li class="grey-text text-lighten-4" ng-repeat="user in user">
                   <p>Name: {{user.first_name}}</p>
                   <p>Phone: {{user.phone}}</p>
                   <p>Email: {{user.email}}</p>
                   <p>Address: {{user.address_street}}</p>
 
-                </li>
+                </li> -->
               </div>
               <div class="col m4 l4 offset-l2 s6">
                 <h5 class="white-text">Links</h5>

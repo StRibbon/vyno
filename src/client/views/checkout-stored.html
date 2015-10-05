@@ -1,0 +1,100 @@
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+
+      <h3>Customer info:</h3>
+      <form name="order_form" class="form-group">
+        <div>
+          <label for="">{{user.first_name}}</label>
+          <!-- <input type="text" ng-model="user" class="form-control" /> -->
+        </div>
+        <div>
+          <label for="">{{user.phone}}</label>
+         <!--  <input type="text" ng-model="user.phone" class="form-control" /> -->
+        </div>
+        <div>
+          <label for="">{{user.address}}</label>
+          <!-- <input type="text" ng-model="user.address" class="form-control" /> -->
+        </div>    
+        <div>
+          <h3>Order info: </h3>
+          <ul ng-repeat="item in cart track by $index">
+            <li>
+              {{item.quantity}}
+              {{item.name}}
+              (${{item.price}})
+              {{item.subTotal | currency}}          
+            </li>
+          </ul>
+        </div>
+        Total items: {{Badge}} 
+        Total: {{Total | currency}}
+        <div>
+        <!-- HIDDEN INPUTS -->
+      </form>
+    </div> <!-- END MODAL CONTENT -->
+  </div>
+<!-- MODAL FOOTER BUTTTONS -->
+  <div class="modal-footer row">
+    <a ui-sref="items" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Shop+</a>
+    <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
+    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat" ng-click="createOrder()">Confirm Order</a>
+  </div>
+</div>
+<!-- SHOP RETURN BUTTON -->
+<div class="shop-return">
+  <a class="modal-trigger btn btn-large brown" ui-sref="items" id="checkout-button">
+    <i class="material-icons">keyboard_return</i>
+  </a>
+</div>
+<!-- CHECKOUT BUTTON -->
+<div class="checkout-header">
+  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
+    <span id="checkout-font">
+    Total ${{Total}}
+    <i class="material-icons">check_circle</i>
+    </span>
+  </a>
+</div>
+<!-- BEGIN CHECKOUT VIEW -->
+<div>
+
+  <!-- <div class="confirm-header">
+    <h4 style="text-align: center; padding: 2rem;">
+    Welcome back {{user}}!
+    <br><br>Items {{Badge}} Total {{Total | currency}} -->
+      <!-- <a class="waves-effect waves-light btn brown">Back to Shop</a> -->
+      <!-- <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Confirm Order</a>
+    </h4>
+  </div> -->
+
+<!-- <div class="checkout-header">
+  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
+    <span id="checkout-font">
+    Total ${{Total}}
+    <i class="material-icons">check_circle</i>
+    </span>
+  </a>
+</div> -->
+<!-- Items-List -->
+    <div ng-repeat="item in cart track by $index" class="row card-panel hoverable">
+      <div class="col s4 m4 l4">
+        <img ng-src="{{ item.img }}" class="responsive-img">
+      </div>
+      <div class="col s8 m8 l8">
+        <h4>
+          <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
+          {{item.maker}}
+          {{item.year}}
+          {{item.location}}
+          ${{ item.price }}
+        </h4>  
+          <h5>
+            <span>Subtotal: {{item.subTotal | currency}}</span>
+          </h5>
+          <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
+          <span class="btn btn-success btn-xs" ng-click="updateItem($index,item)">Ok</span>
+          <span class="btn btn-danger btn-xs red" ng-click="removeItem($index)">X</span>
+      </div>
+    </div>
+</div>
