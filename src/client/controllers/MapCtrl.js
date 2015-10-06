@@ -64,6 +64,7 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
           $scope.duration = response.rows[0].elements[0].duration.text;
           alert("Your wine should arrive in " + $scope.duration);
           $cookieStore.put('ETA', $scope.duration);
+          $scope.duration = $cookieStore.get('ETA');
         }
     });
   }
