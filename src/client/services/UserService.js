@@ -48,6 +48,10 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
      $cookieStore.remove('token');
      $cookieStore.remove('userData');
      $cookieStore.remove('myCart');
+     $cookieStore.remove('ETA');
+     $cookieStore.remove('userAddress');
+     $cookieStore.remove('totalPrice');
+     $cookieStore.remove('orderInfo');
      $rootScope.isLoggedIn = false;
      $state.go('items');
   }
