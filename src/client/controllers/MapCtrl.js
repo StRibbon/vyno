@@ -58,12 +58,11 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
         if(status !== google.maps.DistanceMatrixStatus.OK){
           alert('Error: ' + status);            
         } else {
-          // console.log(response.rows[0].elements[0].duration.text);
-          debugger
-          $scope.duration = response.rows[0].elements[0].duration.text;
-          alert("Your wine should arrive in " + $scope.duration);
-          $cookieStore.put('ETA', $scope.duration);
-          $scope.duration = $cookieStore.get('ETA');
+          var duration = response.rows[0].elements[0].duration.text;
+          $scope.$applyAsync(function() {
+            $scope.duration = duration;
+            $cookieStore.put('ETA', $scope.duration);           
+          })  
         }
     });
   }

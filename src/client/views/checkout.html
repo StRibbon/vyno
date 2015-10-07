@@ -2,7 +2,7 @@
 <div id="modal1" class="modal modal-fixed-footer" ng-controller="MapCtrl">
     <div class="modal-content">
       <!-- ADDRESS INPUT -->
-      <div class="row">
+      <div class="row" id="modal-header">
           <form ng-submit="submit($event)" name="geocode_form">
             <div class="row">
               <div class="input-field col s12 m6">
@@ -12,7 +12,9 @@
               </div>
               <div class="col s12 m6" id="geocode-button">
                 <button class="btn btn-medium" type="submit">Find my location</button>
-                <!-- <p ng-show"duration">ETA: {{duration}}</p> -->
+              </div>
+              <div class="col s12 m12 l6">
+                <p id="delivery-time" ng-if="duration">Delivery time is currently <span class="text-primary">{{duration}}</span></p>
               </div>
             </div>
           </form>

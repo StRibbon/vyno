@@ -83,28 +83,31 @@ router.post('/authenticate', function(req, res) {
     .from(User)
     .where(User.email.equals(req.body.email))
     .exec(function(err, rows) {
-      console.log('WTF WTF WTF');
-      var user = rows[0];
-      var password = rows[0].password;
-      bcrypt.compare(req.body.password, password, function (err, isMatch) {
-          if (isMatch) {
-            var token = createToken(user);
-            setCookie(res, token);
-            res.json({
-              success: true,
-              message: 'Enjoy your token!',
-              token: token,
-              id: user.id,
-              first_name: user.first_name,
-              email: user.email,
-              phone: user.phone,
-              address_street: user.address_street
-            });
-          } else {
-            res.json({success: false});
-          }
-        });
-      console.log(err);
+      if(rows[0]){
+        var user = rows[0];
+        var password = rows[0].password;
+        bcrypt.compare(req.body.password, password, function (err, isMatch) {
+            if (isMatch) {
+              var token = createToken(user);
+              setCookie(res, token);
+              res.json({
+                success: true,
+                message: 'Enjoy your token!',
+                token: token,
+                id: user.id,
+                first_name: user.first_name,
+                email: user.email,
+                phone: user.phone,
+                address_street: user.address_street
+              });
+            } else {
+              res.json({success: false});
+            }
+          });
+        console.log(err);
+      } else {
+        res.json({success: "User doesn't exist"});
+      }
     });
 
 });
