@@ -18,6 +18,24 @@ module.exports = function(done) {
     description: 'A sultry Pinot/Gamay blend that peaks with medium ripe cheeses and creamy nuts. Also impeccable on its own, a must have for any intimate situation.',
     price: 25,
     img: 'https://dpbfm6h358sh7.cloudfront.net/images/1266013/297336279.jpg'
+  })
+  .insert({
+    name: 'Zinfandel',
+    maker: 'Mikami Vineyards',
+    year: 2012,
+    location: "Lodi",
+    description: 'Showing a beautiful nose of fresh, ripe fruit aromas integrated with toasty oak notes that lift the nose well. On the palate, it is ripe and briary, with toasty dark cherry and chocolate flavors.',
+    price: 40,
+    img: 'https://mikamivineyards.files.wordpress.com/2014/09/2012-label.jpg?w=225'
+  })
+  .insert({
+    name: 'Bei Ranch Syrah',
+    maker: 'Eric Demuth',
+    year: 2012,
+    location: 'Sonoma Coast',
+    description: 'The nose offers floral, fruit, and mineral impressions. The palate expresses blazing acidity and a diverse set of tannins that move fluidly to finish.',
+    price: 50,
+    img: 'http://static.wixstatic.com/media/c82821_047bd061d4a84537ae4fbbb78456caae.jpg_srb_p_427_640_75_22_0.50_1.20_0.00_jpg_srb'
   }).exec(function(err) {
     db.close();
     done(err);
