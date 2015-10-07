@@ -59,6 +59,7 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
           alert('Error: ' + status);            
         } else {
           // console.log(response.rows[0].elements[0].duration.text);
+          debugger
           $scope.duration = response.rows[0].elements[0].duration.text;
           alert("Your wine should arrive in " + $scope.duration);
           $cookieStore.put('ETA', $scope.duration);

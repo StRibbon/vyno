@@ -54,6 +54,7 @@ module.exports = function($cookieStore) {
   };
 
   Cart.deleteItem = function(index) {
+    debugger
     Cart.itemList.splice(index,1);
     Cart.updateMyCart();
     Cart.getTotalItemsInCart();
