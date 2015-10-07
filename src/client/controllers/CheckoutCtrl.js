@@ -1,5 +1,5 @@
 module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookieStore', '$cookies', function($http, $scope, $state, User, Cart, Order, $cookieStore, $cookies) {
-  // GET DEMO USER
+  // GET USER
   $scope.user = User.getUser().data;
   // GET ITEMS IN CART
   // $scope.cart = Cart.getItems();

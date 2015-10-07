@@ -4,9 +4,13 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   // GET USER DATA FROM COOKIE
   User.getUser = function () {
     User.userData.data = $cookieStore.get('userData');
-    console.log(User.userData);
-    return User.userData; 
-  }
+    if(User.userData.data){
+      $rootScope.isLoggedIn = true;
+      console.log(User.userData);
+      return User.userData; 
+    }   
+  }   
+   
   // BASIC LOGIN
   // User.login = function(user) {
   //   $http.post('/api/users/authenticate', user).then(res => {
@@ -20,7 +24,6 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   // LOGIN WITH CALLBACK
   User.login = function(user) {
     return $http.post('/api/users/authenticate', user).then(res => {
-      debugger
       if(res.data.success == false){
         alert("Wrong password");
         return "Wrong password";
@@ -45,13 +48,18 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   }
   // USER LOGOUT
   User.logout = function() {
-     $cookieStore.remove('token');
-     $cookieStore.remove('userData');
-     $cookieStore.remove('myCart');
-     $cookieStore.remove('ETA');
-     $cookieStore.remove('userAddress');
-     $cookieStore.remove('totalPrice');
-     $cookieStore.remove('orderInfo');
+
+    angular.forEach(["token", 'userData', 'userAddress', 'ETA', 'myCart', 'totalPrice', 'orderInfo'], 
+      function(key){
+        $cookieStore.remove(key);
+      });
+     // $cookieStore.remove('token');
+     // $cookieStore.remove('userData');
+     // $cookieStore.remove('myCart');
+     // $cookieStore.remove('ETA');
+     // $cookieStore.remove('userAddress');
+     // $cookieStore.remove('totalPrice');
+     // $cookieStore.remove('orderInfo');
      $rootScope.isLoggedIn = false;
      $state.go('items');
   }
