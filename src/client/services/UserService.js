@@ -9,8 +9,7 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
       console.log(User.userData);
       return User.userData; 
     }   
-  }   
-   
+  }     
   // BASIC LOGIN
   // User.login = function(user) {
   //   $http.post('/api/users/authenticate', user).then(res => {
@@ -21,7 +20,7 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   //     $state.go('items');
   //   });
   // }
-  // LOGIN WITH CALLBACK
+  // LOGIN WITH PROMISE
   User.login = function(user) {
     return $http.post('/api/users/authenticate', user).then(res => {
       if(res.data.success == false){
@@ -36,7 +35,7 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
       return "";
     });
   }
-
+  // USER SIGNUP
   User.signup = function(newUser) {
     $http.post('/api/users', newUser).then(res => {
       console.log(res);
@@ -48,32 +47,12 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   }
   // USER LOGOUT
   User.logout = function() {
-
     angular.forEach(["token", 'userData', 'userAddress', 'ETA', 'myCart', 'totalPrice', 'orderInfo'], 
       function(key){
         $cookieStore.remove(key);
       });
-     // $cookieStore.remove('token');
-     // $cookieStore.remove('userData');
-     // $cookieStore.remove('myCart');
-     // $cookieStore.remove('ETA');
-     // $cookieStore.remove('userAddress');
-     // $cookieStore.remove('totalPrice');
-     // $cookieStore.remove('orderInfo');
      $rootScope.isLoggedIn = false;
-     $state.go('items');
+     $state.go('main');
   }
-  // User.updateUser = function(user)
-  //   $http.put('/api/users/'+ user.id, $scope.user).then(res => {
-  
-  // });
-
-  // var User = {
-  //   id: 2323,
-  //   first_name: 'Stephen',
-  //   last_name: 'Ribbon',
-  //   address: { street: '448 Page St.', city:'San Francisco', post:'90077'}
-  // }
-
   return User;
 };

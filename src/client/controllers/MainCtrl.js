@@ -1,27 +1,18 @@
 module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) {
-  
+  // CONFIRM USER LOGGED OUT ON LANDING
   $rootScope.isLoggedIn = false;
-
+  // SIDE NAV UI 
   $scope.closeSideNav = function(){
     $('.side-nav').sideNav('hide');
   }
   // ITEM SERVICES
   $scope.Badge = Cart.getTotalItemsInCart();
   
-  //USER SERVICES
+  // GET USER INFO
   $scope.user = User.getUser();
 
-  // $scope.$watch(function(scope) { return scope.user },
-  //   function(newValue, oldValue) {
-  //     newValue = User.getUser();
-  //   }
-  // );
-  // $scope.getLoggedInUser = function(){
-  //   User.getUser();
-  // }();
-
+  // LOGIN - USER SERVICE
   $scope.loginUser = function(user){
-    debugger
     $scope.userMessage = User.login(user);
     $scope.userMessage.then(function(textMessage)
     {
@@ -29,17 +20,13 @@ module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) 
     });
     console.log($scope.userMessage);
   };
+
+  // SIGNUP - USER SERVICE
   $scope.signUp = User.signup;
+
+  // LOGOUT - USER SERVICE
   $scope.logout = function(){
     User.logout();
     $scope.Badge = Cart.getTotalItemsInCart();
   }
-
-  // $scope.loggedIn = $cookieStore.get(‘loggedin’);
-  // if ($scope.loggedIn == “true”) {
-  //   $scope.loggedOut = “”;
-  // }
-  // else {
-  //   $scope.loggedOut = “true”;
-  // }
 };

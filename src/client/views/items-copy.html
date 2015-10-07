@@ -51,13 +51,6 @@ Current User: {{user.first_name}} {{user.last_name}}
       {{ item.description }}
       {{ item.price | currency }}
     </div>
-    
-      <!-- <select ng-model="selected" ng-init="selected='1'">
-        <option ng-selected="setQuantity(selected)">1</option>
-        <option ng-selected="setQuantity(selected)">2</option>
-        <option ng-selected="setQuantity(selected)">3</option>
-        <option ng-selected="setQuantity(selected)">4</option>
-      </select> -->
     <div class="col s12">
         <span class="btn btn-success btn-xs" ng-click="addItem(selected, item)">
         <span class="glyphicon glyphicon-plus"></span></span>
@@ -79,5 +72,3 @@ Current User: {{user.first_name}} {{user.last_name}}
       <div class="col s2">1</div>
       <div class="col s10">2</div>
 </div>
-
-<gs-yoyo-details yoyo-data="yoyo" ng-repeat="item in items"></gs-yoyo-details>
