@@ -11,7 +11,7 @@ main {
 }*/
 
 .welcome-container {
-  margin-top: 8%;
+  margin-top: 6%;
   max-width: 1098px;
 }
 
@@ -20,6 +20,7 @@ main {
  /* background-size: cover;
   background-position: center;*/
   position: relative;
+  overflow-x:hidden;
   z-index: 0;
 }
 
@@ -28,20 +29,35 @@ main {
   z-index: 1;
   position: absolute;
   top: 20%;
-  right: 5%;
+  right: 8%;
   text-align: right;
 
 }
 
 .welcome-header {
-  font-size: 2rem;
+  font-size: 2.4rem;
 }
 .welcome-subtitle {
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
-
-/*@media only screen and (min-width : 1098px) {
+@media only screen and (max-width : 625px) {
   .welcome-text {
-    position: relative;
+    position relative;
+    text-align: center;
+    right: 0%;
+    margin-top:4%;
   }
-}*/
+  .welcome-container {
+    margin-top: 12%;
+  }
+}
+@media only screen and (min-width : 1098px) {
+  .welcome-text {
+    right: 15%;
+  }
+}
+@media only screen and (min-width : 1200px) {
+  .welcome-text {
+    right: 25%;
+  }
+}

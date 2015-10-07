@@ -1,7 +1,7 @@
 <ul>
   <li ng-repeat="item in items">
     <img src="{{ item.img }}" style="width: 200px;">
-    <a href="#/items/{{item.id}}">{{ item.name }}</a>
+    <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
     {{ item.description }}
     {{ item.price | currency }}
     <div>
