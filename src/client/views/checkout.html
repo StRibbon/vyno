@@ -13,7 +13,7 @@
               <div class="col s12 m6" id="geocode-button">
                 <button class="btn btn-medium" type="submit">Find my location</button>
               </div>
-              <div class="col s12 m12 l6">
+              <div class="col s12 m12 l12">
                 <p id="delivery-time" ng-if="duration">Delivery time is currently <span class="text-primary">{{duration}}</span></p>
               </div>
             </div>
@@ -35,7 +35,7 @@
   </div>
 <!-- MODAL FOOTER BUTTTONS -->
   <div class="modal-footer row">
-    <a ui-sref="confirmation" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat" ng-click="createOrder()">Confirm Address</a>
+    <a class="col sm4 modal-action modal-close waves-effect waves-green btn-flat" ng-click="createOrder()">Confirm Address</a>
     <a ui-sref="items" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Shop+</a>
     <a ui-sref="checkout" class="col sm4 modal-action modal-close waves-effect waves-green btn-flat">Back <-</a>
   </div>

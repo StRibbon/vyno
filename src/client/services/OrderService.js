@@ -11,6 +11,7 @@ module.exports = function(User, Cart, $http, $state, $cookieStore) {
       Order.item = res.data;
       $cookieStore.remove('orderInfo');
       $cookieStore.put('orderInfo', Order.item);
+      $state.go('confirmation');
       return Order.item;
     });
   };

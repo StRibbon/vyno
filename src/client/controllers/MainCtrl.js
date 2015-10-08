@@ -1,4 +1,4 @@
-module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) {
+module.exports = ['$scope', '$state', 'Cart', 'User', '$cookieStore', '$rootScope', function($scope, $state, Cart, User, $cookieStore, $rootScope) {
   // CONFIRM USER LOGGED OUT ON LANDING
   $rootScope.isLoggedIn = false;
   // SIDE NAV UI 
@@ -29,4 +29,4 @@ module.exports = function($scope, $state, Cart, User, $cookieStore, $rootScope) 
     User.logout();
     $scope.Badge = Cart.getTotalItemsInCart();
   }
-};
+}];

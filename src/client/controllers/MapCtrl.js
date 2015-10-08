@@ -1,4 +1,4 @@
-module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $http) {
+module.exports =['$scope', '$state', 'User', 'Map', '$cookieStore', '$rootScope', '$http', function($scope, $state, User, Map, $cookieStore, $rootScope, $http) {
   
   $scope.user = User.getUser();
   var userId = $scope.user.data.id;
@@ -66,5 +66,5 @@ module.exports = function($scope, $state, User, Map, $cookieStore, $rootScope, $
         }
     });
   }
-};
+}];
 

@@ -51,7 +51,7 @@ app.config([
       .state('confirmation', {
         url: '/confirmation',
         templateUrl: 'views/confirmation.html',
-        controller: 'ConfirmCtrl'
+        controller: 'ConfirmedCtrl'
       });
   }
 ]);
@@ -61,7 +61,7 @@ app.controller('MainCtrl', require('./controllers/MainCtrl'));
 app.controller('ItemsListCtrl', require('./controllers/ItemsListCtrl'));
 app.controller('ItemDetailsCtrl', require('./controllers/ItemDetailsCtrl'));
 app.controller('CheckoutCtrl', require('./controllers/CheckoutCtrl'));
-app.controller('ConfirmCtrl', require('./controllers/ConfirmCtrl'));
+app.controller('ConfirmedCtrl', require('./controllers/ConfirmedCtrl'));
 app.controller('MapCtrl', require('./controllers/MapCtrl'));
 // SERVICES
 app.factory('UI', require('./services/UiService'));
