@@ -50,7 +50,7 @@
 
 <!-- CHECKOUT BUTTON -->
 <div ng-show="Badge >= 1" class="checkout-header">
-  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button">
+  <a class="modal-trigger btn btn-large" href="#modal1" id="checkout-button" ng-click="loadMap()">
     <span id="checkout-font">
     Checkout ${{Total}}
     <i class="material-icons">check_circle</i>

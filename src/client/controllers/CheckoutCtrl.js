@@ -1,4 +1,9 @@
-module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookieStore', '$cookies', function($http, $scope, $state, User, Cart, Order, $cookieStore, $cookies) {
+module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookieStore', '$cookies', '$rootScope', function($http, $scope, $state, User, Cart, Order, $cookieStore, $cookies, $rootScope) {
+  
+  if(!$rootScope.isLoggedIn){
+    $state.go('items');
+    // alert("You must log-in to checkout");
+  }
   // GET USER
   $scope.user = User.getUser().data;
   // GET ITEMS IN CART
@@ -37,6 +42,8 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
   $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
+     window.setTimeout(function () {
+      google.maps.event.trigger(map, 'resize')}, 2000);
   });
   
 }];
