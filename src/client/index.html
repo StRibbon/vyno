@@ -67,10 +67,11 @@
               <div class="col m4 l4 offset-l2 s6" style="text-align:right;">
                 <h5 class="white-text">Links</h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a class="grey-text text-lighten-3" ui-sref="items">Shop</a></li>
+                  <li><a class="grey-text text-lighten-3" ui-sref="about">About</a></li>
+                  <li><a class="grey-text text-lighten-3" ui-sref="contact">Contact</a></li>
+                  <li ng-if="!$root.isLoggedIn"><a class="grey-text text-lighten-3" href="login">Log-in</a></li>
+                  <li ng-if="$root.isLoggedIn"><a class="grey-text text-lighten-3" href="login" ng-click="logout()">Log-out</a></li>
                 </ul>
               </div>
             </div>
