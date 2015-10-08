@@ -82,7 +82,7 @@ gulp.task('db:migrate', function() {
 
 gulp.task('create:migration', function() {
   var yargs = require('yargs');
-  var argv = yargs.demand('name').alias('n', 'name');
+  var argv = yargs.demand('name').alias('n', 'name').argv;
   return arceus.util.execAsync('node_modules/.bin/pg-migrate create ' + argv.name );
 });
 
