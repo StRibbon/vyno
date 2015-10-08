@@ -13,6 +13,7 @@
     "anydb-sql": "^0.6.39",
     "arceus": "^0.2.9",
     "babel": "^5.8.23",
+    "bcrypt": "^0.8.5",
     "body-parser": "^1.14.0",
     "cookie-parser": "^1.4.0",
     "dotenv": "^1.2.0",
