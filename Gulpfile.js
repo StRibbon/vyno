@@ -88,7 +88,7 @@ gulp.task('create:migration', function() {
 
 gulp.task('post-install', function() {
   if (process.env.NODE_ENV !== 'development') {
-    return exec('node_modules/.bin/bower install').then(() => {
+    return arceus.util.execAsync('node_modules/.bin/bower install').then(() => {
       return arceus.util.gulpAsync(gulp, 'make');
     });
   }
