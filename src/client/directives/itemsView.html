@@ -1,0 +1,18 @@
+<ul>
+  <li ng-repeat="item in items">
+    <img src="{{ item.img }}" style="width: 200px;">
+    <a href="#/items/{{item.id}}">{{ item.name }}</a>
+    {{ item.description }}
+    {{ item.price | currency }}
+    <div>
+      <select class="b" ng-model="selected" ng-init="selected='1'">
+            <option ng-selected="setQuantity(selected)">1</option>
+            <option ng-selected="setQuantity(selected)">2</option>
+            <option ng-selected="setQuantity(selected)">3</option>
+            <option ng-selected="setQuantity(selected)">4</option>
+          </select>
+          <span class="btn btn-success btn-xs" ng-click="addItem(selected, item)">
+          <span class="glyphicon glyphicon-plus"></span></span>
+    </div>
+  </li>
+</ul>

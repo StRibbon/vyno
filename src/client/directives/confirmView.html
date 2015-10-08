@@ -1,0 +1,36 @@
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      
+  <form ng-submit="submit($event)" class="form-group">
+    <div>
+      <label for="">{{user}}</label>
+      <!-- <input type="text" ng-model="user" class="form-control" /> -->
+    </div>
+    <div>
+      <label for="">{{address}}</label>
+     <!--  <input type="text" ng-model="item.description" class="form-control" /> -->
+    </div>
+    <div>
+      <label for="">{{phone}}</label>
+     <!--  <input type="text" ng-model="item.price" class="form-control" /> -->
+    </div>
+    <div>
+      <ul ng-repeat="item in cart track by $index">
+        <li>{{item.quantity}}{{item.name}}{{item.subTotal}}</li>
+      </ul>
+    </div>
+    {{Badge}} {{Total}}
+    <div>
+      <br>
+      <button type="submit" class="btn btn-success">Save</button>
+  </form>
+      <button ng-click="delete(item)" class="btn btn-danger">Delete</button>
+      <button ui-sref="items" class="btn btn-warning">Back</button>
+    </div>
+</div>
+
+    <div class="modal-footer">
+      <a ui-sref="confirmation" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
