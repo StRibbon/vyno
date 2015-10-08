@@ -4,7 +4,7 @@
   "description": "an on-demand wine delivery app",
   "main": "./src/server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node_modules/.bin/gulp post-install"
   },
   "author": "",
   "license": "ISC",

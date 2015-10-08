@@ -86,6 +86,12 @@ gulp.task('create:migration', function() {
   return arceus.util.execAsync('node_modules/.bin/pg-migrate create ' + argv.name );
 });
 
+gulp.task('post-install', function() {
+  if (process.env.NODE_ENV !== 'development') {
+    return arceus.util.gulpAsync(gulp, 'make');
+  }
+});
+
 gulp.task('default', function() {
-  return arceus.util.gulpAsync(gulp, 'clean', 'make', 'watch');
+  return arceus.util.gulpAsync(gulp, 'make', 'watch');
 });
