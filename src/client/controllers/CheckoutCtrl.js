@@ -43,7 +43,7 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
      window.setTimeout(function () {
-      google.maps.event.trigger(map, 'resize')}, 2000);
+      google.maps.event.trigger(map, 'resize')}, 2500);
   });
   
 }];
