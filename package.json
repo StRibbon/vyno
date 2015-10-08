@@ -4,7 +4,8 @@
   "description": "an on-demand wine delivery app",
   "main": "./src/server/index.js",
   "scripts": {
-    "postinstall": "node_modules/.bin/gulp post-install"
+    "postinstall": "node_modules/.bin/gulp post-install",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
