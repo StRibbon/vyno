@@ -5,7 +5,7 @@ module.exports =['$scope', '$state', 'User', 'Map', '$cookieStore', '$rootScope'
 
   var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
-          center: {lat: 37.7833, lng: -122.4157}
+          center: {lat: 37.8116013, lng: -122.483849}
         });
 
   $scope.loadMap = function(){
