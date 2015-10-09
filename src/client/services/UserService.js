@@ -24,8 +24,8 @@ module.exports = function ($http, $state, $cookieStore, $rootScope) {
   User.login = function(user) {
     return $http.post('/api/users/authenticate', user).then(res => {
       if(res.data.success == false){
-        alert("Wrong password");
-        return "Wrong password";
+        Materialize.toast(res.data.message, 4000);
+        return "";
       }
       console.log(res);    
       // User.userData = res;

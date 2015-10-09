@@ -92,7 +92,7 @@ router.post('/authenticate', function(req, res) {
               setCookie(res, token);
               res.json({
                 success: true,
-                message: 'Enjoy your token!',
+                message: 'Login successful!',
                 token: token,
                 id: user.id,
                 first_name: user.first_name,
@@ -101,12 +101,12 @@ router.post('/authenticate', function(req, res) {
                 address_street: user.address_street
               });
             } else {
-              res.json({success: false});
+              res.json({success: false, message: 'Wrong password!'});
             }
           });
         console.log(err);
       } else {
-        res.json({success: "User doesn't exist"});
+        res.json({success: false, message: "User does not exist!"});
       }
     });
 
