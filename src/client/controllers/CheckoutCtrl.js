@@ -2,8 +2,8 @@ module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookie
   
   if(!$rootScope.isLoggedIn){
     $state.go('items');
-     Materialize.toast('You must first login to checkout!', 4000);
-     
+     Materialize.toast('Log-in to checkout!', 4000);
+
     // alert("You must log-in to checkout");
   }
   // GET USER
