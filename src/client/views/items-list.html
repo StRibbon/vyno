@@ -8,16 +8,19 @@
 
 <div ng-repeat="item in items track by $index" class="row card-panel hoverable" id="item-panel" layout-sm="column">
     <div class="col s12 m4 l4">
-      <img ng-src="{{ item.img }}" style="max-height: 400px;" class="responsive-img">
+      <img ng-src="{{ item.img }}" style="max-height: 400px;" class="responsive-img item-list-img">
     </div>
     
     <div class="col s12 m8 l8" flow-text>
-      <h4>
+      <p class="item-name">
         <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-        {{ item.maker }}
-        {{ item.year }}
+          {{ item.year }}<br>
+      </p>    
+      <p class="item-details">     
+        {{ item.maker }},
         {{ item.location }}
-      </h4>
+      </p>
+     
       <div class="item-description">
         {{ item.description }}
       </div>    
