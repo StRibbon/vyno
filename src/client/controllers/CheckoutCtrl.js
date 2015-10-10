@@ -1,5 +1,7 @@
-module.exports = ['$http', '$scope', '$state', 'User', 'Cart', 'Order', '$cookieStore', '$cookies', '$rootScope', function($http, $scope, $state, User, Cart, Order, $cookieStore, $cookies, $rootScope) {
+module.exports = ['$http', '$scope', '$state', 'User', 'Map', 'Cart', 'Order', '$cookieStore', '$cookies', '$rootScope', function($http, $scope, $state, User, Map, Cart, Order, $cookieStore, $cookies, $rootScope) {
   
+  $scope.loadMap = Map.loadMap();
+
   if(!$rootScope.isLoggedIn){
     $state.go('items');
      Materialize.toast('Log-in to checkout!', 4000);

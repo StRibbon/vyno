@@ -8,10 +8,7 @@ module.exports =['$scope', '$state', 'User', 'Map', '$cookieStore', '$rootScope'
           center: {lat: 37.8116013, lng: -122.483849}
         });
 
-  $scope.loadMap = function(){
-    window.setTimeout(function () {
-      google.maps.event.trigger(map, 'resize')}, 2000);
-  }
+  $scope.loadMap = Map.loadMap();
   
   var geocoder = new google.maps.Geocoder();
   
