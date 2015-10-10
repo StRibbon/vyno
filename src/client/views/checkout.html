@@ -80,19 +80,20 @@
 <!-- Items-List -->
     <div ng-repeat="item in cart track by $index" class="row card-panel hoverable">
       <div class="col s4 m4 l4">
-        <img ng-src="{{ item.img }}" class="responsive-img">
+        <img ng-src="{{ item.img }}" style="max-height: 400px;" class="responsive-img">
       </div>
       <div class="col s8 m8 l8">
-        <h4>
-          <a ng-href="#/items/{{item.id}}">{{ item.name }}</a>
-          {{item.maker}}
-          {{item.year}}
-          {{item.location}}
-          ${{ item.price }}
-        </h4>  
-          <h5>
+          <p class="item-name">
+            <a ng-href="#/items/{{item.id}}">{{ item.name }} {{ item.year }}</a>
+            <br>
+          </p>    
+          <p class="item-details">     
+            {{ item.maker }},
+            {{ item.location }}
+          </p>
+          <p class="item-description">
             <span>Subtotal: {{item.subTotal | currency}}</span>
-          </h5>
+          </p>
           <input type="number" style="font-size: 2rem; width:50px;" class="form-control" ng-model="item.quantity" name="newQ">
           <span class="btn btn-success btn-xs" ng-click="updateItem($index,item)">Ok</span>
           <span class="btn btn-danger btn-xs red" ng-click="removeItem($index)">X</span>
