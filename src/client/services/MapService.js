@@ -3,7 +3,7 @@ module.exports = function($rootScope){
   
   Map.loadMap = function(){
     window.setTimeout(function () {
-      google.maps.event.trigger(map, 'resize')}, 2000);
+      google.maps.event.trigger(map, 'resize')}, 0);
   }
 
   return Map;
